@@ -20,7 +20,7 @@
         "enable_sticky": true,
         "text_size": "text-xs",
         "navigation_mode": "scrolling",
-        "scrolling_speed": 1,
+        "scrolling_speed": 30,
         "color": "#000",
         "background_gradient": "",
         "textcolor": "#fff"
@@ -44,7 +44,7 @@
         "color_scheme": "",
         "show_line_separator": true,
         "auto_rotate": false,
-        "change_slides_speed": 5
+        "change_slides_speed": 9
       }
     },
     "header": {
