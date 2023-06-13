@@ -11,10 +11,18 @@
             "text": "Announce something here",
             "url": ""
           }
+        },
+        "f3433fe3-f546-413d-8c08-a0bcc63fa5d3": {
+          "type": "message",
+          "settings": {
+            "text": "Announce something here",
+            "url": ""
+          }
         }
       },
       "block_order": [
-        "a7f7c4c5-6f51-4e91-8754-90537d54c2b7"
+        "a7f7c4c5-6f51-4e91-8754-90537d54c2b7",
+        "f3433fe3-f546-413d-8c08-a0bcc63fa5d3"
       ],
       "settings": {
         "enable_sticky": true,
