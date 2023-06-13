@@ -7,7 +7,6 @@
       "blocks": {
         "a7f7c4c5-6f51-4e91-8754-90537d54c2b7": {
           "type": "message",
-          "disabled": true,
           "settings": {
             "text": "Announce something here",
             "url": ""
