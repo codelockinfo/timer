@@ -1,0 +1,94 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<div class="main-section-product" id="{{section.id}}">
+  <div class="clstabbing main-section-cls">
+    <div class="block-product ">
+      <div class="tab_sec container014">
+        <ul class="tab-list space_in_name ">
+          {% for block in section.blocks %}
+            {%- assign collection = collections[block.settings.collection] -%}
+            <li>
+              <a href="#tabbing1{{forloop.index}}" class="tabset {% if forloop.first %}code-current{% endif %} ">
+                {{- block.settings.tabname -}}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="experties">
+        {% for block in section.blocks %}
+          <div class="sub-data {% if forloop.index == 1 %}active2{% endif %}" id="tabbing1{{forloop.index}}">
+            <div class="normal container014">
+              <div class="timelinemain">
+                <div class="timelineimg">
+                    <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                </div>
+                <div>
+                  <h1 class="subheading">{{ block.settings.subheading }}</h1>
+                  <h2 class="subheading_tab2">{{ block.settings.subheading2 }}</h2>
+                  <p class="contentprgrf">{{ block.settings.prgrf }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "new-timeline",
+    "settings": [],
+    "blocks": [
+      {
+        "name": "block",
+        "type": "block",
+        "settings": [
+          {
+            "id": "tabname",
+            "type": "text",
+            "label": "Tab-Name"
+          },
+          {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+           {
+            "id": "subheading",
+            "type": "text",
+            "label": "Sub-Heading"
+          }, {
+            "id": "subheading2",
+            "type": "text",
+            "label": "Heading"
+          },{
+            "id": "prgrf",
+            "type": "text",
+            "label": "Peragraf"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "new-timeline"
+      }
+    ]
+  }
+{% endschema %}
+<script>
+  $('.tab-list li a').click(function(f) {
+    console.log('hello');
+    f.preventDefault();
+    var value = $(this).attr('href');
+
+    $('.sub-data.active2').removeClass('active2');
+    $(value).addClass('active2');
+
+    $('.tabset.code-current').removeClass('code-current');
+    $(this).addClass('code-current');
+  });
+</script>
