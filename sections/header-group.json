@@ -2,6 +2,38 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
+    "09aa3410-810f-4254-912a-602a7f2553ab": {
+      "type": "announcement-new",
+      "blocks": {
+        "a7f7c4c5-6f51-4e91-8754-90537d54c2b7": {
+          "type": "message",
+          "settings": {
+            "text": "Announce something here",
+            "url": ""
+          }
+        },
+        "f3433fe3-f546-413d-8c08-a0bcc63fa5d3": {
+          "type": "message",
+          "settings": {
+            "text": "Announce something here",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "a7f7c4c5-6f51-4e91-8754-90537d54c2b7",
+        "f3433fe3-f546-413d-8c08-a0bcc63fa5d3"
+      ],
+      "settings": {
+        "enable_sticky": true,
+        "text_size": "text-xs",
+        "navigation_mode": "arrows",
+        "scrolling_speed": 30,
+        "color": "#000",
+        "background_gradient": "",
+        "textcolor": "#fff"
+      }
+    },
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
@@ -9,25 +41,30 @@
           "type": "announcement",
           "settings": {
             "text": "Welcome to our store",
-            "text_alignment": "center",
-            "color_scheme": "background-1",
             "link": ""
           }
         }
       },
       "block_order": [
         "announcement-bar-0"
-      ]
+      ],
+      "settings": {
+        "color_scheme": "",
+        "show_line_separator": true,
+        "auto_rotate": false,
+        "change_slides_speed": 9
+      }
     },
     "header": {
       "type": "header",
       "settings": {
-        "color_scheme": "background-1",
         "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
+        "color_scheme": "background-1",
+        "menu_color_scheme": "",
         "enable_country_selector": true,
         "enable_language_selector": true,
         "mobile_logo_position": "center",
@@ -38,6 +75,7 @@
     }
   },
   "order": [
+    "09aa3410-810f-4254-912a-602a7f2553ab",
     "announcement-bar",
     "header"
   ]
