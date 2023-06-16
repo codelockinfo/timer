@@ -7,9 +7,9 @@
           {% for block in section.blocks %}
             {%- assign collection = collections[block.settings.collection] -%}
             <li>
-              <a href="#tabbing1{{forloop.index}}" class="tabset {% if forloop.first %}code-current{% endif %} ">
-                {{- block.settings.tabname -}}
-              </a>
+                <a href="#tabbing1{{forloop.index}}" class="tabset {% if forloop.first %}code-current{% endif %} ">
+                  {{- block.settings.tabname -}}
+                </a>
             </li>
           {% endfor %}
         </ul>
@@ -19,13 +19,13 @@
         {% for block in section.blocks %}
           <div class="sub-data {% if forloop.index == 1 %}active2{% endif %}" id="tabbing1{{forloop.index}}">
             <div class="normal container014">
-              <div class="timelinemain">
-                <div class="timelineimg">
-                    <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+              <div class="timelinemain {% if block.settings.option_select == '1' %} Flex-direction-change {% endif %}">
+                <div class="imgwrapper timelineimg {% if block.settings.apply_overlay %}Image--overly{% endif %}">
+                  <img src="{{ block.settings.image | img_url: 'master' }}" alt="" class="imganmtn">
                 </div>
-                <div>
-                  <h1 class="subheading">{{ block.settings.subheading }}</h1>
+                <div class="timlin-content">
                   <h2 class="subheading_tab2">{{ block.settings.subheading2 }}</h2>
+                  <h1 class="subheading">{{ block.settings.subheading }}</h1>
                   <p class="contentprgrf">{{ block.settings.prgrf }}</p>
                 </div>
               </div>
@@ -52,19 +52,43 @@
             "label": "Tab-Name"
           },
           {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+          "type": "checkbox",
+          "id": "apply_overlay",
+          "label": "Apply overlay on image",
+          "info": "Only applied on mobile. This can improve text visibility.",
+          "default": true
         },
-           {
+          {
+      "type": "select",
+      "id": "option_select",
+      "default": "2",
+      "options": [
+       {
+          "value": "1",
+          "label": "Right"
+       },
+       {
+          "value": "2",
+          "label": "Left"
+        }
+      ],
+      "label": "Image Position"
+    },
+          {
             "id": "subheading",
             "type": "text",
             "label": "Sub-Heading"
-          }, {
+          },
+          {
             "id": "subheading2",
             "type": "text",
             "label": "Heading"
-          },{
+          }, {
             "id": "prgrf",
             "type": "text",
             "label": "Peragraf"
@@ -79,6 +103,7 @@
     ]
   }
 {% endschema %}
+
 <script>
   $('.tab-list li a').click(function(f) {
     console.log('hello');
@@ -87,8 +112,8 @@
 
     $('.sub-data.active2').removeClass('active2');
     $(value).addClass('active2');
-
+    $(".imganmtn").css("transform", "scale(1.1)");
     $('.tabset.code-current').removeClass('code-current');
     $(this).addClass('code-current');
   });
-</script>
+  </script>
