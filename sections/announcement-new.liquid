@@ -18,7 +18,7 @@
     {%- capture content -%}
       {%- for block in section.blocks -%}
         <a href="{{ block.settings.urllink }}" class="txtclr">
-          <p class="bold text-base maintxt {{ section.settings.text_size }} ">{{ block.settings.text }}</p>
+          <p class="bold text_base maintxt {{ section.settings.text_size }} ">{{ block.settings.text }}</p>
         </a>
       {% endfor %}
     {%- endcapture -%}
@@ -36,7 +36,7 @@
           <div class="innerslide">
             {%- if section.settings.text_size != blank -%}
               <a href="{{ block.settings.urllink }}" class="txtclr">
-                <p class="bold text-base maintxt {{ section.settings.text_size }} ">{{ block.settings.text }}</p>
+                <p class="bold text_base maintxt {{ section.settings.text_size }} ">{{ block.settings.text }}</p>
               </a>
             {%- endif -%}
             <span class="marquedot"></span>
@@ -47,7 +47,7 @@
   </div>
 {% endif %}</div>{% schema %}
 {
-  "name": "Merquee Section new",
+  "name": "New Annoucement bar",
   "class": "shopify-section--anounce-main",
   "tag": "aside",
   "max_blocks": 5,
@@ -85,13 +85,16 @@
         {
           "value": "text-xxs",
           "label": "X-Small"
-        }, {
+        },
+         {
           "value": "text-xs",
           "label": "Small"
-        }, {
+        },
+         {
           "value": "text-base",
           "label": "Medium"
-        }, {
+        },
+         {
           "value": "text-lg",
           "label": "Large"
         }
@@ -134,7 +137,7 @@
       "min": 1,
       "max": 30,
       "unit": "s",
-      "default": 1
+      "default": 25
     }, {
       "type": "color",
       "id": "color",
@@ -154,7 +157,7 @@
 
   "presets": [
     {
-      "name": "Merquee Section new"
+      "name": "New Annoucement bar"
     }
   ]
 }
@@ -182,7 +185,7 @@ $('.anounceslide').slick({
   vertical: true,
   speed: 1000,
   slidesToScroll: 1,
-  autoplay: false,
+  autoplay: true,
   prevArrow: "<button type='button' class='drag dogarrow1 slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
   nextArrow: "<button type='button' class='drag dogarrow2  slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
 
