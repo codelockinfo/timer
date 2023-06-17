@@ -9,14 +9,14 @@
           "type": "message",
           "settings": {
             "text": "Announce something here",
-            "url": ""
+            "urllink": ""
           }
         },
         "f3433fe3-f546-413d-8c08-a0bcc63fa5d3": {
           "type": "message",
           "settings": {
             "text": "Announce something here",
-            "url": ""
+            "urllink": ""
           }
         }
       },
@@ -28,14 +28,16 @@
         "enable_sticky": true,
         "text_size": "text-xs",
         "navigation_mode": "arrows",
+        "arrow_mode": "true",
         "scrolling_speed": 30,
-        "color": "#000",
+        "color": "#000000",
         "background_gradient": "",
-        "textcolor": "#fff"
+        "textcolor": "#ffffff"
       }
     },
     "announcement-bar": {
       "type": "announcement-bar",
+      "disabled": true,
       "blocks": {
         "announcement-bar-0": {
           "type": "announcement",
