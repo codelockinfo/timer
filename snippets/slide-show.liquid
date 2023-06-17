@@ -1,0 +1,26 @@
+<div class="header-text">
+  {%- assign style_title = section.settings.title -%}
+  <h3 class="des_{{style_title}} header-slider">
+
+    {{ section.settings.heading }}
+    {% if style_title == "6" %}
+      <span></span>
+    {% endif %}
+    {% if style_title == "7" %}
+      <span></span>
+    {% endif %}
+    {% if style_title == "9" %}
+      <span></span>
+    {% endif %}
+  </h3>
+  <p
+    class="
+    header-slider_2
+    {% if section.settings.change == "1" %}body-font
+      {% else section.settings.change == "2" %}dody-text-font{% endif %}
+    {% if style_title == "10" %}display-none{% endif %}
+    {% if style_title == "13" %}border-bottom{% endif %}">
+
+    {{ section.settings.sub-text }}
+  </p>
+</div>

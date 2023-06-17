@@ -1,0 +1,1084 @@
+<link rel="canonical" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+{% assign collection = section.settings.collection %}
+<div class="container">
+  {%- render 'slide-show' -%}
+  <div class="product-main my-slider">
+    {% for product in collections[collection].products limit: section.settings.product-number %}
+
+      {%- if section.settings.col == "2" -%}
+        {%- assign classforcol = 'img-two' -%}
+      {%- elsif section.settings.col == "3" -%}
+        {%- assign classforcol = 'img-three' -%}
+      {%- elsif section.settings.col == "4" -%}
+        {%- assign classforcol = 'img-four' -%}
+      {%- elsif section.settings.col == "5" -%}
+        {%- assign classforcol = 'img-five' -%}
+      {%- elsif section.settings.col == "6" -%}
+        {%- assign classforcol = 'img-six' -%}
+      {%- endif -%}
+
+      {%- if section.settings.col_md == "2" -%}
+        {%- assign classforcol_tab = 'img-tablet-two' -%}
+      {%- elsif section.settings.col_md == "3" -%}
+        {%- assign classforcol_tab = 'img-tablet-three' -%}
+      {%- elsif section.settings.col_md == "4" -%}
+        {%- assign classforcol_tab = 'img-tablet-four' -%}
+      {%- endif -%}
+
+      {%- if section.settings.col_mb == "1" -%}
+        {%- assign classforcol_mob = 'img-mobile-one' -%}
+      {%- elsif section.settings.col_mb == "2" -%}
+        {%- assign classforcol_mob = 'img-mobile-two' -%}
+      {%- endif -%}
+
+
+
+      <div class="product {{ classforcol }} {{ classforcol_tab }} {{ classforcol_mob }}">
+
+        <a href="#">
+          <div class="over-flow reveal">
+            <img src="{{ product.featured_image.src | img_url:'master' }}" alt="{{ product.title }}">
+            <img
+              class="hidden"
+              src="{{ product.images.last | img_url: 'master' }}"
+              alt="{{ product.images.last.alt | escape }}">
+          </div>
+          <h3 class="title">{{ product.title }}</h3>
+          <p class="price">{{ product.price | money }}</p>
+          <p class="price">{{ product.vandor | money }}</p>
+        </a>
+      </div>
+    {% endfor %}
+    {%- if section.settings.fliprows -%}
+      {% comment %} Code that will execute if the checkbox is ticked in the theme customizer {% endcomment %}
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Slide Show",
+    "settings": [
+
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "sub-text",
+        "label": "Sub Text"
+      },
+      {
+        "type": "select",
+        "id": "change",
+        "label": "Sub Text use font",
+        "options": [
+          {
+            "value": "1",
+            "label": "Body font"
+          }, {
+            "value": "2",
+            "label": "Sub Tile Font"
+          }
+        ],
+        "default": "1"
+      },
+
+      {
+        "type": "select",
+        "id": "title",
+        "label": "Design Title",
+        "options": [
+          {
+            "value": "1",
+            "label": "Design1"
+          },
+          {
+            "value": "2",
+            "label": "Design2"
+          },
+          {
+            "value": "3",
+            "label": "Design3"
+          },
+          {
+            "value": "4",
+            "label": "Design4"
+          }, {
+            "value": "5",
+            "label": "Design5"
+          }, {
+            "value": "6",
+            "label": "Design6"
+          }, {
+            "value": "7",
+            "label": "Design7"
+          }, {
+            "value": "8",
+            "label": "Design8"
+          }, {
+            "value": "9",
+            "label": "Design9"
+          }, {
+            "value": "10",
+            "label": "Design10"
+          }, {
+            "value": "11",
+            "label": "Design11"
+          }, {
+            "value": "12",
+            "label": "Design12"
+          }, {
+            "value": "13",
+            "label": "Design13"
+          }, {
+            "value": "14",
+            "label": "Design14"
+          }
+        ],
+        "default": "1"
+      }, {
+        "type": "checkbox",
+        "id": "fliprows",
+        "label": "Use icon color primary?",
+        "default": true
+      }, {
+        "type": "paragraph",
+        "content": "[Get icons Line awesome](https://icons8.com/line-awesome)"
+      }, {
+        "type": "header",
+        "content": "== General Settings"
+      }, {
+        "type": "collection",
+        "id": "collection",
+        "label": "collection"
+      }, {
+        "type": "range",
+        "label": "Products per page",
+        "info": "Number of products per page",
+        "id": "product-number",
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "default": 6
+      }, {
+        "type": "range",
+        "label": "Space between products",
+        "id": "product-space",
+        "min": 1,
+        "max": 50,
+        "step": 1,
+        "default": 30
+      }, {
+        "type": "select",
+        "id": "pagination",
+        "label": "Pagination",
+        "options": [
+          {
+            "value": "1",
+            "label": "None"
+          }, {
+            "value": "2",
+            "label": "'View all' button"
+          }
+        ],
+        "default": "1"
+      }, {
+        "type": "checkbox",
+        "id": "Button-round",
+        "label": "Button-round",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "Button",
+        "label": "Button icon?",
+        "default": false
+      }, {
+        "type": "select",
+        "id": "buttton_style",
+        "label": "Button style",
+        "options": [
+          {
+            "value": "1",
+            "label": "Default"
+          }, {
+            "value": "2",
+            "label": "Primary"
+          }, {
+            "value": "3",
+            "label": "Dark"
+          }
+        ],
+        "default": "1"
+      }, {
+        "type": "select",
+        "id": "col",
+        "label": "Products per row (desktop)",
+        "info": "How many Collections you want to show per row",
+        "default": "3",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }, {
+            "value": "6",
+            "label": "6"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "col_md",
+        "label": "Products per row (tablet)",
+        "default": "3",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          }, {
+            "value": "3",
+            "label": "3"
+          }, {
+            "value": "4",
+            "label": "4"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "col_mb",
+        "label": "Products per row (Mobile)",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          }, {
+            "value": "2",
+            "label": "2"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "Design-product",
+        "label": "Design product",
+        "options": [
+          {
+            "value": "1",
+            "label": "Design 1"
+          }, {
+            "value": "2",
+            "label": "Design 1 (center)"
+          }, {
+            "value": "3",
+            "label": "Design 2"
+          }
+        ],
+        "default": "1"
+      }, {
+        "type": "checkbox",
+        "id": "vandor",
+        "label": "Show product vendors",
+        "default": true
+      }, {
+        "type": "header",
+        "content": "== COUNTDOWN TIMER"
+
+      }, {
+        "type": "checkbox",
+        "id": "use",
+        "label": "Use countdown timer?",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "round",
+        "label": "Round countdown timer?",
+        "default": false
+      }, {
+        "type": "select",
+        "id": "countdown-Design",
+        "label": "Countdown Design:",
+        "options": [
+          {
+            "value": "1",
+            "label": "Design 1"
+          },
+          {
+            "value": "2",
+            "label": "Design 2"
+          },
+          {
+            "value": "3",
+            "label": "Design 3"
+          },
+          {
+            "value": "4",
+            "label": "Design 4"
+          }, {
+            "value": "5",
+            "label": "Design 5"
+          }
+        ],
+        "default": "1"
+      }, {
+        "type": "checkbox",
+        "id": "loop",
+        "label": "Use Loop?",
+        "info": "At the end of cells, wrap-around to the other end for infinite scrolling.",
+        "default": true
+      }, {
+        "type": "range",
+        "id": "au_time",
+        "min": 1,
+        "max": 30,
+        "step": 0.5,
+        "label": "Autoplay Speed in second.",
+        "unit": "sec",
+        "default": 6
+      }, {
+        "type": "checkbox",
+        "id": "au_hover",
+        "label": "Pause Autoplay On Hover?",
+        "info": "Auto-playing will pause when the user hovers over the carousel.",
+        "default": true
+      }, {
+        "type": "header",
+        "content": "== Prev Next Button, Page Dot Settings"
+      }, {
+        "type": "paragraph",
+        "content": "—————————————————"
+      }, {
+        "type": "paragraph",
+        "content": "Prev Next Button:"
+      }, {
+        "type": "checkbox",
+        "id": "button",
+        "label": "Enable Prev Next Button?",
+        "info": "Creates and enables previous & next buttons.",
+        "default": false
+      }, {
+        "type": "select",
+        "id": "btn_vi",
+        "label": "Visible:",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "always"
+          }, {
+            "value": "2",
+            "label": "Only hover"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "btn_owl",
+        "label": "Style",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "Style 1"
+          }, {
+            "value": "2",
+            "label": "Style 2"
+          }, {
+            "value": "3",
+            "label": "Style 3"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "btn_color",
+        "label": "Color",
+        "default": "0",
+        "options": [
+          {
+            "value": "0",
+            "label": "Transparent"
+          }, {
+            "value": "1",
+            "label": "Gray"
+          }, {
+            "value": "2",
+            "label": "White"
+          }, {
+            "value": "3",
+            "label": "Primary"
+          }
+        ]
+      }, {
+        "type": "paragraph",
+        "content": "—————————————————"
+      }, {
+        "type": "paragraph",
+        "content": "Page Dot:"
+      }, {
+        "type": "checkbox",
+        "id": "dot",
+        "label": "Enable Page Dot?",
+        "info": "Creates and enables page dots.",
+        "default": true
+      }, {
+        "type": "select",
+        "id": "dot_owl",
+        "label": "Style",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "Style 1"
+          }, {
+            "value": "2",
+            "label": "Style 2"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "dot_color",
+        "label": "Color",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "Dark"
+          }, {
+            "value": "2",
+            "label": "Light"
+          }, {
+            "value": "3",
+            "label": "Primary"
+          }
+        ]
+      }, {
+        "type": "header",
+        "content": "== Design Options"
+      }, {
+        "type": "checkbox",
+        "id": "hidden",
+        "label": "Hidden Section?",
+        "default": false,
+        "info": "Hidden section on home page, but still visible on blog posts, product page, pages as shortcode."
+      }, {
+        "type": "checkbox",
+        "id": "cp_code",
+        "label": "Show copy shortcode?",
+        "default": false,
+        "info": "Copy shortcode only show on admin editor."
+      }, {
+        "type": "select",
+        "id": "layout",
+        "default": "wrap",
+        "label": "Layout",
+        "options": [
+          {
+            "value": "container",
+            "label": "Container"
+          }, {
+            "value": "wrap",
+            "label": "Wrapped Container"
+          }, {
+            "value": "nt_full",
+            "label": "Full Width"
+          }
+        ]
+      }, {
+        "type": "color",
+        "id": "cl_bg",
+        "label": "Background color"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+      }, {
+        "type": "text",
+        "id": "mg",
+        "label": "Margin",
+        "info": "Margin top, margin right, margin bottom, margin left. If you not use to blank",
+        "default": "50px,,50px,",
+        "placeholder": "50px,,50px,"
+      }, {
+        "type": "text",
+        "id": "pd",
+        "label": "Padding",
+        "info": "Padding top, padding right, padding bottom, padding left. If you not use to blank",
+        "placeholder": "50px,,50px,"
+      }, {
+        "type": "header",
+        "content": "== Design Mobile Options"
+      }, {
+        "type": "text",
+        "id": "mg_mb",
+        "label": "Margin",
+        "placeholder": "50px,,50px,"
+      }, {
+        "type": "text",
+        "id": "pd_mb",
+        "label": "Padding",
+        "placeholder": "50px,,50px,"
+      }
+    ],
+    "presets": [
+      {
+        "name": "try-slider-show"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: hidden;
+
+  }
+  .product a {
+    text-decoration: none;
+  }
+  .product-main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .header-text {
+    text-align: center;
+    width: 100%;
+    position: relative;
+  }
+  .body-font {
+    font-weight: 500;
+  }
+  .dody-text-font {
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .des_2:after,
+  .des_2:before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: #222;
+    width: 60px;
+    margin: 0 30px;
+  }
+  h3.des_2.header-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .des_3.header-slider:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -20px;
+    width: 40px;
+    height: 2px;
+    background-color: #222;
+  }
+  .des_4 {
+    border-bottom: 2px solid rgba(119, 119, 119, 0.17);
+  }
+  h3.des_4.header-slider {
+    padding: 10px 0;
+  }
+  .des_4.header-slider:after {
+    content: " ";
+    position: absolute;
+    top: 39%;
+    left: 45.5%;
+    margin-top: 10px;
+    width: 9%;
+    height: 2px;
+    text-align: center;
+    background-color: #222;
+  }
+  .des_5:after {
+    background-image: url('https://cdn.shopify.com/s/files/1/0604/7311/4856/files/svg_title.svg?v=1686722423');
+    content: " ";
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-left: -125px;
+    width: 250px;
+    height: 30px;
+  }
+  .header-text .des_5 {
+    padding-bottom: 5px;
+    margin-bottom: 40px;
+  }
+  .des_6:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    bottom: -12px;
+    left: 48%;
+    width: 24px;
+    height: 1px;
+    display: inline-block;
+    background-color: #dcdcdc;
+  }
+  .des_6 span:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    bottom: -12px;
+    left: 50%;
+    margin-left: -6px;
+    width: 12px;
+    height: 1px;
+    display: inline-block;
+    background-color: #c1c1c1;
+    transform: rotate(45deg);
+  }
+  .des_6 span:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    bottom: -12px;
+    left: 50%;
+    margin-left: -6px;
+    width: 12px;
+    height: 1px;
+    display: inline-block;
+    background-color: #c1c1c1;
+    transform: rotate(-45deg);
+  }
+  .des_6:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    bottom: -12px;
+    left: 51%;
+    width: 24px;
+    height: 1px;
+    display: inline-block;
+    background-color: #dcdcdc;
+  }
+  .des_7 span:after {
+    background-image: url('https://cdn.shopify.com/s/files/1/0604/7311/4856/files/Linearicons_diamond.svg?v=1686744360');
+    content: " ";
+    position: absolute;
+    top: 40%;
+    left: 56.3%;
+    margin-left: -125px;
+    width: 250px;
+    height: 30px;
+    background-repeat: no-repeat;
+  }
+  .des_7:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    bottom: -12px;
+    left: 48%;
+    width: 24px;
+    height: 1px;
+    display: inline-block;
+    background-color: #dcdcdc;
+  }
+  .des_7:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    bottom: -12px;
+    left: 51%;
+    width: 24px;
+    height: 1px;
+    display: inline-block;
+    background-color: #dcdcdc;
+  }
+  .des_8:after {
+    content: "";
+    display: block;
+    position: relative;
+    width: 60%;
+    max-width: 150px;
+    height: 2px;
+    background-color: currentColor;
+    margin: 12px auto 15px;
+  }
+  .des_9:before {
+    content: "";
+    height: 8px;
+    background: #000;
+    opacity: .7;
+    position: absolute;
+    bottom: 65px;
+    left: 45%;
+    width: 10%;
+    z-index: -1;
+  }
+  h3.des_10.header-slider {
+    display: flex;
+  }
+  .display-none {
+    display: none;
+  }
+  .des_11:after {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: #222;
+    width: 40%;
+    height: 1px;
+    background: 0 0;
+    border-top: 1px solid #ebebeb;
+    position: absolute;
+    top: 17px;
+    left: 14px;
+  }
+  .des_11:before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: #222;
+    width: 40%;
+    height: 1px;
+    background: 0 0;
+    border-top: 1px solid #ebebeb;
+    position: absolute;
+    top: 17px;
+    right: 14px;
+  }
+
+  .des_12:after {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: #222;
+    width: 40%;
+    height: 1px;
+    background: 0 0;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    padding: 1px;
+    position: absolute;
+    top: 17px;
+    left: 14px;
+  }
+  .des_12:before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: #222;
+    width: 40%;
+    height: 1px;
+    background: 0 0;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    padding: 1px;
+    position: absolute;
+    top: 17px;
+    right: 14px;
+  }
+
+  p.header-slider_2.body-font.border-bottom {
+    margin-bottom: 50px;
+  }
+  .border-bottom:after {
+    content: " ";
+    position: absolute;
+    bottom: -20%;
+    left: 48.5%;
+    margin-top: 20px;
+    width: 40px;
+    height: 5px;
+    background-color: #222;
+  }
+  .des_14.header-slider:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 43.5%;
+    margin-left: -20px;
+    width: 197px;
+    height: 4px;
+    background-color: #222;
+  }
+  {
+    content: " ";
+    position: absolute;
+    bottom: -20%;
+    left: 48.5%;
+    margin-top: 20px;
+    width: 40px;
+    height: 5px;
+    background-color: #222;
+  }
+
+  .title_3::after {
+    content: "";
+    display: inline-block;
+    width: 53px;
+    height: 2px;
+    position: absolute;
+    background: #222;
+    top: 48px;
+    left: 49.5%;
+  }
+  .title_3::after {
+    content: "";
+    display: inline-block;
+    width: 53px;
+    height: 2px;
+    position: absolute;
+    background: #222;
+    top: 48px;
+    left: 49.5%;
+  }
+  .over-flow img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .over-flow {
+    overflow: hidden;
+    height: 90%;
+  }
+  .title {
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: #4d5959;
+    font-weight: 900;
+  }
+  .price {
+    margin: 0 0 10px;
+    font-size: 14px;
+  }
+  .product {
+    width: 33.33%;
+    display: flex;
+    text-align: center;
+    position: relative;
+    padding: 0 15px 30px;
+    overflow: hidden;
+    transition: 0.5s ease;
+
+  }
+  .product-info {
+    margin: 10px 0 40px;
+  }
+  .load-more_wrap {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  button a {
+    color: #ffff;
+  }
+
+
+  svg.t4s-btn-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentcolor !important;
+    color: #fff;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+  .color-item {
+    display: inline-flex;
+  }
+
+  .t4s-pr-color__item {
+    padding: 1px;
+    margin: 0;
+    border-color: #ddd;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 18px;
+    vertical-align: top;
+    height: 18px;
+    background-color: red;
+  }
+  .t4s-pr-color__item:hover {
+    border: 2px solid black;
+  }
+  span.t4s-pr-color__name {
+    display: none;
+  }
+  .bg_color_blue {
+    --t4s-bg-color: #a8bcd4;
+  }
+  .color-gray {
+    background-color: #a8bcd4;
+  }
+  .color-green {
+    background-color: green;
+  }
+  .color-pink {
+    background-color: #fcc6de;
+  }
+  .color-yellow {
+    background-color: yellow;
+  }
+  .product:hover .product-btns {
+    display: block;
+    transition: 0.5s ease;
+    z-index: 99999999;
+  }
+  .t4s-product-btns:before {
+    content: "";
+    color: white;
+    font-size: 30px;
+    font-family: sans-serif;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 100%;
+    transition: all 0.2s;
+  }
+  .t4s-product-btns:hover:before {
+    top: 0;
+  }
+  .t4s-product-btns {
+    position: absolute;
+    /* margin-top: 130px; */
+    width: 92.5%;
+    height: 50px;
+    bottom: 95px;
+    background: #b59677;
+    overflow: hidden;
+    display: none;
+  }
+  .product:hover .t4s-product-btns {
+    display: block;
+    z-index: 8888;
+  }
+  .t4s-product-btns:hover .reveal .hidden {
+    display: block;
+
+  }
+  .header-slider {
+    font-size: 25px;
+    font-weight: 700;
+    color: #000;
+  }
+  .header-slider .header-slider_2 {
+    margin: 0;
+    padding: 0;
+  }
+  .header-slider_2 {
+    font-style: {{ section.settings.change }}
+    ;
+    margin: 0;
+  }
+
+  .slick-dots {
+    position: absolute;
+    bottom: 2px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+  .slick-dots li {
+    margin: 0;
+  }
+  .slick-dots li button:before {
+    font-family: 'slick';
+    font-size: 14px;
+    line-height: 14px;
+  }
+  .img-two {
+    width: 49%;
+  }
+  .img-three {
+    width: 32%;
+  }
+  .img-four {
+    width: 24%;
+  }
+  .img-five {
+    width: 19%;
+  }
+  .img-six {
+    width: 15%;
+  }
+
+  @media only screen and (max-width: 991px) {
+    .img-tablet-two {
+      width: 50%;
+    }
+    .img-tablet-three {
+      width: 33%;
+    }
+    .img-tablet-four {
+      width: 24%;
+    }
+  }
+
+  @media and (max-width: 576px) {
+    .img-mobile-one {
+      width: 90%;
+    }
+    .img-mobile-two {
+      width: 49%;
+    }
+  }
+</style>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.my-slider').slick({
+      slidesToShow: {{ section.settings.col }},
+      slidesToScroll: 3,
+      arrows: true,
+      dots: true,
+      speed: 300,
+      infinite: true,
+      autoplaySpeed: 5000,
+      autoplay: false,
+      variableWidth: false,
+      responsive: [
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: {{ section.settings.col_md }}
+          }
+        }, {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: {{ section.settings.col_mb }}
+          }
+        }
+      ]
+    });
+  });
+</script>

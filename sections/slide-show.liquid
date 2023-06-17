@@ -1,0 +1,462 @@
+<link rel="canonical" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
+{% assign collection = section.settings.collection %}
+<div class="container">
+  <div class="product-main multipleitems">
+    {% for product in collections[collection].products limit: section.settings.product-number %}
+      <div class="product">
+        <a href="#">
+          <div class="over-flow reveal">
+            <img src="{{ product.featured_image.src | img_url:'master' }}" alt="{{ product.title }}">
+            <img
+              class="hidden"
+              src="{{ product.images.last | img_url: 'master' }}"
+              alt="{{ product.images.last.alt | escape }}" />
+          </div>
+          <h3 class="title">{{ product.title }}</h3>
+          <p class="price">{{ product.price | money }}</p>
+
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "collection"
+      }, {
+        "type": "range",
+        "label": "Number of Products",
+        "id": "product-number",
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "default": 6
+      }
+    ],
+    "presets": [
+      {
+        "name": "slider-show"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .product a {
+    text-decoration: none;
+  }
+  .product-main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .over-flow img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .over-flow {
+    overflow: hidden;
+    height: 90%;
+  }
+  .title {
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: #4d5959;
+    font-weight: 900;
+  }
+  .price {
+    margin: 0 0 10px;
+    font-size: 14px;
+  }
+  .product {
+    width: 33.33%;
+    display: flex;
+    text-align: center;
+    position: relative;
+    padding: 0 15px 30px;
+    overflow: hidden;
+    transition: 0.5s ease;
+
+  }
+  .product-info {
+    margin: 10px 0 40px;
+  }
+  .load-more_wrap {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  button a {
+    color: #ffff;
+  }
+
+
+  svg.t4s-btn-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentcolor !important;
+    color: #fff;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+  .color-item {
+    display: inline-flex;
+  }
+
+  .t4s-pr-color__item {
+    padding: 1px;
+    margin: 0;
+    border-color: #ddd;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 18px;
+    vertical-align: top;
+    height: 18px;
+    background-color: red;
+  }
+  .t4s-pr-color__item:hover {
+    border: 2px solid black;
+  }
+  span.t4s-pr-color__name {
+    display: none;
+  }
+  .bg_color_blue {
+    --t4s-bg-color: #a8bcd4;
+  }
+  .color-gray {
+    background-color: #a8bcd4;
+  }
+  .color-green {
+    background-color: green;
+  }
+  .color-pink {
+    background-color: #fcc6de;
+  }
+  .color-yellow {
+    background-color: yellow;
+  }
+  .product:hover .product-btns {
+    display: block;
+    transition: 0.5s ease;
+    z-index: 99999999;
+  }
+  .t4s-product-btns:before {
+    content: "";
+    color: white;
+    font-size: 30px;
+    font-family: sans-serif;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 100%;
+    transition: all 0.2s;
+  }
+  .t4s-product-btns:hover:before {
+    top: 0;
+  }
+  .t4s-product-btns {
+    position: absolute;
+    /* margin-top: 130px; */
+    width: 92.5%;
+    height: 50px;
+    bottom: 95px;
+    background: #b59677;
+    overflow: hidden;
+    display: none;
+  }
+  .product:hover .t4s-product-btns {
+    display: block;
+    z-index: 8888;
+  }
+  .t4s-product-btns:hover .reveal .hidden {
+    display: block;
+
+  }
+
+  .slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .slick-list {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  .slick-list:focus {
+    outline: none;
+  }
+  .slick-list.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+
+  .slick-slider .slick-track,
+  .slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .slick-track {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+  }
+  .slick-track:before,
+  .slick-track:after {
+    content: "";
+    display: table;
+  }
+  .slick-track:after {
+    clear: both;
+  }
+  .slick-loading .slick-track {
+    visibility: hidden;
+  }
+
+  .slick-slide {
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    display: none;
+  }
+  [dir="rtl"] .slick-slide {
+    float: right;
+  }
+  .slick-slide img {
+    display: block;
+  }
+  .slick-slide.slick-loading img {
+    display: none;
+  }
+  .slick-slide.dragging img {
+    pointer-events: none;
+  }
+  .slick-initialized .slick-slide {
+    display: block;
+  }
+  .slick-loading .slick-slide {
+    visibility: hidden;
+  }
+  .slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+  }
+
+  .slick-arrow.slick-hidden {
+    display: none;
+  }
+
+  /*================ Slick Slider Theme ================*/
+  .slick-loading .slick-list {
+    background: #fff var(--slick-img-url) center center no-repeat;
+  }
+
+  / Icons / / Arrows / .slick-prev,
+  .slick-next {
+    position: absolute;
+    display: block;
+    height: 20px;
+    width: 20px;
+    line-height: 0;
+    font-size: 0;
+    cursor: pointer;
+    background: transparent;
+    color: transparent;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    padding: 0;
+    border: none;
+  }
+  .slick-prev:hover,
+  .slick-prev:focus,
+  .slick-next:hover,
+  .slick-next:focus {
+    background: transparent;
+    color: transparent;
+  }
+  .slick-prev:hover:before,
+  .slick-prev:focus:before,
+  .slick-next:hover:before,
+  .slick-next:focus:before {
+    opacity: 1;
+  }
+  .slick-prev.slick-disabled:before,
+  .slick-next.slick-disabled:before {
+    opacity: 0.25;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    font-family: "slick-icons, sans-serif";
+    font-size: 20px;
+    line-height: 1;
+    color: #000;
+    opacity: 0.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .slick-prev {
+    left: -25px;
+  }
+  [dir="rtl"] .slick-prev {
+    left: auto;
+    right: -25px;
+  }
+  .slick-prev:before {
+    content: "←";
+  }
+  [dir="rtl"] .slick-prev:before {
+    content: "→";
+  }
+
+  .slick-next {
+    right: -25px;
+  }
+  [dir="rtl"] .slick-next {
+    left: -25px;
+    right: auto;
+  }
+  .slick-next:before {
+    content: "→";
+  }
+  [dir="rtl"] .slick-next:before {
+    content: "←";
+  }
+
+  / Dots / .slick-dotted.slick-slider {
+    margin-bottom: 30px;
+  }
+
+  .slick-dots {
+    list-style: none;
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+  .slick-dots li {
+    position: relative;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+  }
+  .slick-dots li button,
+  .slick-dots li a {
+    border: 0;
+    background: transparent;
+    display: block;
+    height: 20px;
+    width: 20px;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    padding: 5px;
+    cursor: pointer;
+  }
+  .slick-dots li button:hover:before,
+  .slick-dots li button:focus:before,
+  .slick-dots li a:hover:before,
+  .slick-dots li a:focus:before {
+    opacity: 1;
+  }
+  .slick-dots li button:before,
+  .slick-dots li a:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "•";
+    width: 20px;
+    height: 20px;
+    font-family: "slick-icons, sans-serif";
+    font-size: 6px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    opacity: 0.25;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .slick-dots li.slick-active button:before {
+    color: #fff;
+    opacity: 0.75;
+  }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<script>
+  $('.multipleitems').slick({
+    arrows: true,
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    speed: 1000,
+    slidesToScroll: 1,
+    autoplay: true,
+    prevArrow: "<button type='button' class='drag dogarrow1 slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+    nextArrow: "<button type='button' class='drag dogarrow2  slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      }, {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }, {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+
+    ]
+  });
+</script>
