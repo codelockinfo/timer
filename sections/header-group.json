@@ -27,7 +27,7 @@
       "settings": {
         "enable_sticky": true,
         "text_size": "text-xs",
-        "navigation_mode": "arrows",
+        "navigation_mode": "slider",
         "arrow_mode": "true",
         "scrolling_speed": 30,
         "color": "#000000",
