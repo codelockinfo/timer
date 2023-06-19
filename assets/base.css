@@ -3318,6 +3318,7 @@ details-disclosure>details {
 }
 
 /* timeline css start */
+
 .tab_sec {
   background: #F5F5F5;
   padding: 30px 0;
@@ -3413,11 +3414,12 @@ details-disclosure>details {
 
 .space_in_name li {
   list-style-type: none;
+  padding: 0px 40px;
 }
 
 ul.tab-list.space_in_name {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .tabset {
@@ -3430,6 +3432,7 @@ ul.tab-list.space_in_name {
   flex-wrap: wrap;
   width: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .Flex-direction-change {
@@ -3444,14 +3447,50 @@ ul.tab-list.space_in_name {
   width: 100%;
 }
 
-.active2 .imganmtn {
-  transform: translate(0) scale(1.1);
-}
-
-.timelineimg {
+.imganmtn {
   transform: translate(-50px) scale(1.1);
   transform-origin: left;
-  transition: transform 1.1s
+  transition: transform 1.5s;
+}
+
+.active2 img {
+  animation: taadaa 1s;
+}
+
+.active45 img {
+  animation: taadaa45 2s;
+}
+
+/* @keyframes taadaa {
+  0% {
+    opacity: 0;
+    transform: translateX(50px) scale(1.1);
+  }
+
+
+  100% {
+    opacity: 0.5;
+    transform: translateX(0px) scale(1.1);
+  }
+}  */
+
+
+@keyframes taadaa45 {
+  0% {
+    opacity: 0;
+    transform: translate(-50) scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0) scale(1.1);
+  }
+}
+
+
+.timeline-inner-content {
+  transform: translateY(-600px);
+  animation: 0.8s slideIn ease-in-out forwards 0.8s;
 }
 
 .imgwrapper {
@@ -3489,12 +3528,16 @@ h1.subheading {
 .experties {
   display: flex;
   justify-content: center;
-  order: 1;
+  
+  padding: 50px 0;
 }
 
 .tab_sec.container014 {
   width: 100%;
   order: 2;
+}
+.Flex-direction-change{
+  order: 1;
 }
 
 .block-product {
@@ -3512,6 +3555,10 @@ h1.subheading {
     top: 0;
     background-image: linear-gradient(to top, rgba(4, 4, 4, 0.65), rgba(54, 54, 54, 0.2));
   }
+  .imganmtn {
+    transform: translate(0px) scale(1.1);
+   
+}
 
   .timelineimg {
     width: 100%;

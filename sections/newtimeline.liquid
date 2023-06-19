@@ -1,32 +1,32 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <div class="main-section-product" id="{{section.id}}">
   <div class="clstabbing main-section-cls">
-    <div class="block-product ">
+    <div class="block-product">
       <div class="tab_sec container014">
         <ul class="tab-list space_in_name ">
           {% for block in section.blocks %}
-            {%- assign collection = collections[block.settings.collection] -%}
             <li>
-                <a href="#tabbing1{{forloop.index}}" class="tabset {% if forloop.first %}code-current{% endif %} ">
-                  {{- block.settings.tabname -}}
-                </a>
+              <a href="#tabbing1{{forloop.index}}" class="tabset {% if forloop.first %}code-current{% endif %} ">
+                {{- block.settings.tabname -}}
+              </a>
             </li>
           {% endfor %}
         </ul>
       </div>
-
-      <div class="experties">
+      <div class="experties Flex-direction-change">
         {% for block in section.blocks %}
           <div class="sub-data {% if forloop.index == 1 %}active2{% endif %}" id="tabbing1{{forloop.index}}">
             <div class="normal container014">
               <div class="timelinemain {% if block.settings.option_select == '1' %} Flex-direction-change {% endif %}">
                 <div class="imgwrapper timelineimg {% if block.settings.apply_overlay %}Image--overly{% endif %}">
-                  <img src="{{ block.settings.image | img_url: 'master' }}" alt="" class="imganmtn">
+                  <img src="{{ block.settings.image | img_url: 'master' }}" alt=" " class="imganmtn" >
                 </div>
                 <div class="timlin-content">
-                  <h2 class="subheading_tab2">{{ block.settings.subheading2 }}</h2>
-                  <h1 class="subheading">{{ block.settings.subheading }}</h1>
-                  <p class="contentprgrf">{{ block.settings.prgrf }}</p>
+                  <div class="timeline-inner-content">
+                    <h2 class="subheading_tab2">{{ block.settings.subheading2 }}</h2>
+                    <h1 class="subheading">{{ block.settings.subheading }}</h1>
+                    <p class="contentprgrf">{{ block.settings.prgrf }}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -40,7 +40,24 @@
 {% schema %}
   {
     "name": "new-timeline",
-    "settings": [],
+    "settings": [
+      {
+      "type": "select",
+      "id": "teb_select",
+      "default": "2",
+      "options": [
+       {
+          "value": "1",
+          "label": "Top"
+       },
+       {
+          "value": "2",
+          "label": "Bottom"
+        }
+      ],
+      "label": "Image Position"
+    }
+    ],
     "blocks": [
       {
         "name": "block",
@@ -57,34 +74,31 @@
             "label": "Image"
           },
           {
-          "type": "checkbox",
-          "id": "apply_overlay",
-          "label": "Apply overlay on image",
-          "info": "Only applied on mobile. This can improve text visibility.",
-          "default": true
-        },
+            "type": "checkbox",
+            "id": "apply_overlay",
+            "label": "Apply overlay on image",
+            "info": "Only applied on mobile. This can improve text visibility.",
+            "default": true
+          },
           {
-      "type": "select",
-      "id": "option_select",
-      "default": "2",
-      "options": [
-       {
-          "value": "1",
-          "label": "Right"
-       },
-       {
-          "value": "2",
-          "label": "Left"
-        }
-      ],
-      "label": "Image Position"
-    },
-          {
+            "type": "select",
+            "id": "option_select",
+            "default": "2",
+            "options": [
+              {
+                "value": "1",
+                "label": "Right"
+              }, {
+                "value": "2",
+                "label": "Left"
+              }
+            ],
+            "label": "Image Position"
+          }, {
             "id": "subheading",
             "type": "text",
             "label": "Sub-Heading"
-          },
-          {
+          }, {
             "id": "subheading2",
             "type": "text",
             "label": "Heading"
@@ -105,15 +119,18 @@
 {% endschema %}
 
 <script>
-  $('.tab-list li a').click(function(f) {
-    console.log('hello');
-    f.preventDefault();
-    var value = $(this).attr('href');
+  	$('.tab-list li a').click(function(f){
+      console.log('hello');
+      f.preventDefault();
+       var value = $(this).attr('href');
 
     $('.sub-data.active2').removeClass('active2');
-    $(value).addClass('active2');
-    $(".imganmtn").css("transform", "scale(1.1)");
-    $('.tabset.code-current').removeClass('code-current');
-    $(this).addClass('code-current');
-  });
-  </script>
+  $(value).addClass('active2');
+
+  $('.sub-data.active45').removeClass('active45');
+  $(value).addClass('active45');
+
+  $('.tabset.code-current').removeClass('code-current');
+   $(this).addClass('code-current');
+   });
+</script>
