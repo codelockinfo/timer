@@ -1,10 +1,74 @@
+<style>
+  #products-btn{
+   display: none;
+  }
+  {% if section.settings.pagination == "2" %}
+   #products-btn{
+    display: block;
+   }
+  {% endif %}
+</style>
+  <style>
+    {% if section.settings.vandor == true %}
+      #products-btn{
+      display: block;
+    }{% else %}
+    .vandor-info{
+      display: none;
+    }
+  {% endif %}
+  </style>
+
+  <style>
+    {% if section.settings.Button == true %}
+    .btn_icon_true:after {
+      font-family: 'Line Awesome Free';
+      font-weight: 900;
+      content: "→";
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 17px;
+      color: currentColor;
+  }
+  {% else %}
+  .btn_icon_true:after {
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    content: "→";
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 17px;
+    color: currentColor;
+    display: none;
+} 
+{% endif %}
+  </style>
+  <style>
+    #products-btn{
+    color:black;
+   }
+    {% if section.settings.buttton_style == "2" %}
+    button#products-btn{
+    background-color: rgb(24, 24, 204) !important;
+    color:#fff;
+   }
+  {% endif %}
+   {% if section.settings.buttton_style == "3" %}
+   #products-btn{
+    background-color: #000 !important;
+    color:#fff;
+   }
+  {% endif %}
+  </style>
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="canonical" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
-<link rel="canonical" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 {% assign collection = section.settings.collection %}
 <div class="position-cls">
-<div class="container">
+<div class="container bg-clr" style="background-image: url('{{ section.settings.image | img_url:'master' }}'); background-repeat: no-repeat; background-sixe:cover; background:{{section.settings.cl_bg}}">
   {%- render 'slide-show' -%}
-  <div class="product-main multipleitems">
+  <div class="product-main multipleitems  {% if section.settings.autoplay %}{{ section.settings.au_time | times: 1000 }}{% else %}false{% endif %}">
+
     {% for product in collections[collection].products limit: section.settings.product-number %}
       {%- if section.settings.col == "2" -%}
         {%- assign classforcol = 'img-two' -%}
@@ -42,9 +106,12 @@
               src="{{ product.images.last | img_url: 'master' }}"
               alt="{{ product.images.last.alt | escape }}">
           </div>
+          {%- for product_vendor in shop.vendors -%}
+            <p class="vandor-info">{{ product.vendor}}</p>
+           {%- endfor -%} 
           <h3 class="title">{{ product.title }}</h3>
           <p class="price">{{ product.price | money }}</p>
-          <p class="price">{{ product.vandor | money }}</p>
+          
         </a>
       </div>
     {% endfor %}
@@ -52,7 +119,11 @@
     {%- if section.settings.fliprows -%}
       {% comment %} Code that will execute if the checkbox is ticked in the theme customizer {% endcomment %}
     {%- endif -%}
-  </div>
+    </div>
+    <button id="products-btn" class="btn_icon_true">
+      View More
+   </button>
+   
 </div>
 </div>
 {% schema %}
@@ -291,7 +362,7 @@
         "type": "checkbox",
         "id": "vandor",
         "label": "Show product vendors",
-        "default": true
+        "default": false
       }, {
         "type": "header",
         "content": "== COUNTDOWN TIMER"
@@ -370,20 +441,21 @@
       //   "info": "Creates and enables previous & next buttons.",
       //   "default": false
       // },
+  
       {
         "type": "select",
         "id": "button",
-        "label": "select Enable Page Dot?",
+        "label": "select Enable Page arrow?",
         "options": [
           {
-            "value": "1",
-            "label": "select1"
-          }, {
-            "value": "2",
-            "label": "select2"
-          }
+          "value": "true",
+          "label": "True"
+        }, {
+          "value": "false",
+          "label": "False"
+        }
         ],
-        "default": "1"
+        "default": "false"
       }, 
        {
         "type": "select",
@@ -443,13 +515,28 @@
         "type": "paragraph",
         "content": "Page Dot:"
       }, 
+      // {
+      //   "type": "checkbox",
+      //   "id": "dot_mode",
+      //   "label": "Enable Page Dot?",
+      //   "info": "Creates and enables page dots.",
+      //   "default": true
+      // },
       {
-        "type": "checkbox",
-        "id": "dot",
-        "label": "Enable Page Dot?",
-        "info": "Creates and enables page dots.",
-        "default": true
-      },
+      "type": "select",
+      "id": "dot_mode",
+      "label": "Page Dot",
+      "options": [
+        {
+          "value": "true",
+          "label": "True"
+        }, {
+          "value": "false",
+          "label": "False"
+        }
+      ],
+      "default": "true"
+    },
       {
         "type": "select",
         "id": "dot_owl",
@@ -499,17 +586,17 @@
       }, {
         "type": "select",
         "id": "layout",
-        "default": "wrap",
+        "default": "1",
         "label": "Layout",
         "options": [
           {
-            "value": "container",
+            "value": "1",
             "label": "Container"
           }, {
-            "value": "wrap",
+            "value": "2",
             "label": "Wrapped Container"
           }, {
-            "value": "nt_full",
+            "value": "3",
             "label": "Full Width"
           }
         ]
@@ -561,32 +648,61 @@
 .position-cls{
     position: relative;
 }
+
+button.drag.dogarrow1.slick-prev.pull-left.slick-arrow,button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
+    transform: rotate(0deg);
+    border-radius: 50%;
+}
+
+button.click-button-two.drag.dogarrow1.slick-prev.pull-left.slick-arrow,button.click-button-two.drag.dogarrow2.slick-next.pull-right.slick-arrow{
+    border-radius: 0%;
+  transform: rotate(0deg);
+}
+button.click-botton-third.drag.dogarrow1.slick-prev.pull-left.slick-arrow,button.click-botton-third.drag.dogarrow2.slick-next.pull-right.slick-arrow{
+  transform: rotate(35deg); 
+  border-radius: 0%;
+}
+
+.click-botton-third i.fa-sharp.fa-solid.fa-angle-right {
+    transform: rotate(-33deg);
+}
+
+.click-botton-third i.fa-solid.fa-angle-left {
+    transform: rotate(-33deg);
+}
 button.drag.dogarrow1.slick-prev.pull-left.slick-arrow {
     position: absolute;
     top: 155px;
     z-index: 9;
     left: 24px;
-    padding: 13px 13px;
-    background: none;
-    transform: rotate(35deg);
+    padding: 10px 16px;
+    border: 2px solid black;
+    
 }
 button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
     position: absolute;
     top: 155px;
     z-index: 9;
-    transform: rotate(313deg);
     right: 17px;
-    padding: 13px 13px;
+    padding: 10px 16px;
     background: none;
+    border: 2px solid black;
 }
+button#products-btn{
+  border:1px solid black;
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 10px 18px;
 
-button.drag.dogarrow2.slick-next.pull-right.slick-arrow, button.drag.dogarrow1.slick-prev.pull-left.slick-arrow{
-    border-radius: 50%;
-    transform: rotate(0deg);
-}   
-{% comment %} button.drag.dogarrow2.slick-next.pull-right.slick-arrow,button.drag.dogarrow1.slick-prev.pull-left.slick-arrow{
-transform: rotate(0deg);
-border-radius: 0%;
+
+}
+button#products-btn:hover {
+    background-color: black;
+    color: white;
+}
+{% comment %} #image {
+     background-image:url('{{ section.settings.image.src | img_url: 'master' }}');
+     background-size: cover;
 } {% endcomment %}
 
   .container {
@@ -937,8 +1053,6 @@ border-radius: 0%;
   button a {
     color: #ffff;
   }
-
-
   svg.t4s-btn-icon {
     width: 18px;
     height: 18px;
@@ -1034,11 +1148,20 @@ border-radius: 0%;
     padding: 0;
   }
   .header-slider_2 {
-    font-style: {{ section.settings.change }}
-    ;
+    font-style: {{ section.settings.change }};
     margin: 0;
   }
- 
+  .nt_cat_lm, .view_more,.js_add_ld {
+    background-image: url('lds-sw.svg?1945') !important;
+    background-size: 0 !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    transition: none !important;
+}
+.nt_cat_lm.swl, .view_more.swl,.js_add_ld.swl {
+  background-image: url('lds-swl.svg?1944') !important;
+}
+
   .slick-slider {
     position: relative;
     display: block;
@@ -1117,6 +1240,7 @@ border-radius: 0%;
   
   / Icons /
   / Arrows /
+  
   .slick-prev,
   .slick-next {
     position: absolute;
@@ -1133,19 +1257,8 @@ border-radius: 0%;
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
     padding: 0;
-    border: none; }
-    .slick-prev:hover, .slick-prev:focus,
-    .slick-next:hover,
-    .slick-next:focus {
-      background: transparent;
-      color: transparent; }
-      .slick-prev:hover:before, .slick-prev:focus:before,
-      .slick-next:hover:before,
-      .slick-next:focus:before {
-        opacity: 1; }
-    .slick-prev.slick-disabled:before,
-    .slick-next.slick-disabled:before {
-      opacity: 0.25; }
+    border: none; 
+    }
     .slick-prev:before,
     .slick-next:before {
       font-family: "slick-icons, sans-serif";
@@ -1154,7 +1267,9 @@ border-radius: 0%;
       color: #000;
       opacity: 0.75;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale; }
+      -moz-osx-font-smoothing: grayscale;
+
+       }
   
   .slick-prev {
     left: -25px; }
@@ -1162,9 +1277,9 @@ border-radius: 0%;
       left: auto;
       right: -25px; }
     .slick-prev:before {
-      content: "←"; }
+      content: ""; }
       [dir="rtl"] .slick-prev:before {
-        content: "→"; }
+        content: ""; }
   
   .slick-next {
     right: -25px; }
@@ -1172,9 +1287,10 @@ border-radius: 0%;
       left: -25px;
       right: auto; }
     .slick-next:before {
-      content: "→"; }
+      content: ""; }
       [dir="rtl"] .slick-next:before {
-        content: "←"; }
+        content: ""; 
+        }
   
   / Dots /
   .slick-dotted.slick-slider {
@@ -1188,7 +1304,7 @@ border-radius: 0%;
         margin: 0;
     }
     li#slick-slide00{
-        background-color: red !important;
+        background-color: transparent !important;
         z-index: 999;
 
     }
@@ -1197,14 +1313,14 @@ border-radius: 0%;
       display: inline-block;
       height: 20px;
       width: 20px;
-      margin: 0 5px;
+      margin: 0;
       padding: 0;
       cursor: pointer;
-      background: red !important;
+      background: transparent !important;
       }
       .slick-dots li button, .slick-dots li a {
         border: 0;
-        background: red;
+        background: none;
         display: block;
         height: 20px;
         width: 20px;
@@ -1212,31 +1328,35 @@ border-radius: 0%;
         font-size: 0px;
         color: green;
         padding: 5px;
-        cursor: pointer; }
+        cursor: pointer; 
+        }
         .slick-dots li button:hover:before, .slick-dots li button:focus:before, .slick-dots li a:hover:before, .slick-dots li a:focus:before {
-          opacity: 1; }
+          opacity: 1;
+           }
         .slick-dots li button:before, .slick-dots li a:before {
           position: absolute;
-          top: 10;
-          left: 10;
+          top: 0px;
+          left: 0px;
           content: "•";
           width: 20px;
           height: 20px;
           font-family: "slick-icons, sans-serif";
-          font-size: 30px;
+          font-size: 45px;
           line-height: 20px;
           text-align: center;
-          color: red;
+          color: blue;
           opacity: 0.25;
           -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale; }
-      .slick-dots li.slick-active button:before {
-        color: #4400ff !important;
-        opacity: 0.75; }
-        ul.slick-dots{
-        color: #4400ff !important;
+          -moz-osx-font-smoothing: grayscale;
+      }
+          .slick-dots li.slick-active button:before {
+          color: #4400ff !important;
+          opacity: 0.75; }
+          ul.slick-dots{
+          color: #4400ff !important;
+          height: 50px;
 
-        }
+      }
 
   @media only screen and (max-width: 991px) {
     .img-tablet-two {
@@ -1265,36 +1385,48 @@ border-radius: 0%;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <script>
-    $('.multipleitems').slick({
-      arrows: true,
-       dots: true,
+
+var buttonStyle = {{section.settings.btn_owl}};
+var nextButtonStyle = "<button type='button' class='drag dogarrow2  slick-next pull-right'><i class='fa-sharp fa-solid fa-angle-right'></i></button>";
+var previousButtonStyle = "<button type='button' class='drag dogarrow1 slick-prev pull-left'><i class='fa-solid fa-angle-left '></i></button>";
+
+ if(buttonStyle == '2'){
+  nextButtonStyle = "<button type='button' class='click-button-two drag dogarrow2  slick-next pull-right'><i class='fa-sharp fa-solid fa-angle-right'></i></button>";
+  previousButtonStyle = "<button type='button' class='click-button-two drag dogarrow1 slick-prev pull-left'><i class='fa-solid fa-angle-left '></i></button>";
+}else if(buttonStyle == '3'){
+  nextButtonStyle = "<button type='button' class='click-botton-third drag dogarrow2  slick-next pull-right'><i class='fa-sharp fa-solid fa-angle-right'></i></button>";
+  previousButtonStyle = "<button type='button' class='click-botton-third drag dogarrow1 slick-prev pull-left'><i class='fa-solid fa-angle-left '></i></button>";
+} 
+
+  $('.multipleitems').slick({
+    arrows: {{section.settings.button}},
+    dots: {{section.settings.dot_mode}},
     infinite: true,
-    slidesToShow:{{ section.settings.col }} ,
-      speed: 2500,                                                                  
-    slidesToScroll:3,
-       autoplay: true,
-      prevArrow:"<button type='button' class='drag dogarrow1 slick-prev pull-left'><i class='fa-solid fa-angle-left '></i></button>",
-              nextArrow:"<button type='button' class='drag dogarrow2  slick-next pull-right'><i class='fa-sharp fa-solid fa-angle-right'></i></button>",
-           responsive: [
-    {
-      breakpoint: 991,
-      settings: {
-        slidesToShow: {{ section.settings.col_md }},
-        slidesToScroll: 1,
-        infinite: true,
-        speed: {{ section.settings.scrolling_speed }}
-        100,
-        dots: true
-      }
-    },
-    {
-          breakpoint: 576,
-          settings: {
-            slidesToShow:  {{ section.settings.col_mb }} 
-          }
+    slidesToShow: {{section.settings.col}},
+    speed: {{section.settings.au_time}}00,
+    slidesToScroll: 3,
+    autoplay: true,
+    prevArrow: previousButtonStyle,
+    nextArrow: nextButtonStyle,
+    responsive: [{
+            breakpoint: 991,
+            settings: {
+                slidesToShow: {{section.settings.col_md}},
+                slidesToScroll: 1,
+                infinite: true,
+                speed: {{section.settings.scrolling_speed}}
+                100,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 576,
+            settings: {
+                slidesToShow: {{section.settings.col_mb}}
+            }
         },
 
-   
-  ]
-  });
+
+    ]
+});
 </script>
