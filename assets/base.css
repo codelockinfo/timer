@@ -3410,3 +3410,14 @@ span.marquedot {
 }
 
 /* annoucment-bar end */
+
+/* feature-chart start */
+
+.feature-chart-main{
+  padding: 90px 65px;
+}
+.feature-chart-main{
+  background-color: {{ section.settings.bgcolor }};
+  
+}
+/* feature-chart-end */
