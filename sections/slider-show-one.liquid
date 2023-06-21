@@ -18,7 +18,17 @@
     }
   {% endif %}
   </style>
-
+  <style>
+    {% if section.settings.Button-round == true %}
+    button#products-btn {
+      border-radius: 50%;
+      padding: 15px 20px;
+  }{% else %}
+    button#products-btn{
+      border-radius: 0%;
+    }
+    {% endif %}
+  </style>
   <style>
     {% if section.settings.Button == true %}
     .btn_icon_true:after {
@@ -61,14 +71,107 @@
   {% endif %}
   </style>
   
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="canonical" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
-{% assign collection = section.settings.collection %}
-<div class="position-cls">
-<div class="container bg-clr" style="background-image: url('{{ section.settings.image | img_url:'master' }}'); background-repeat: no-repeat; background-sixe:cover; background:{{section.settings.cl_bg}}">
-  {%- render 'slide-show' -%}
-  <div class="product-main multipleitems  {% if section.settings.autoplay %}{{ section.settings.au_time | times: 1000 }}{% else %}false{% endif %}">
+  <style>
+    {% if section.settings.hidden == true %}
+    .bg-clr {
+      display: none;
+    }
+  {% else %}
+  .bg-clr {
+      display:block;
+  }
+{% endif %}
+    </style>
+    <style>
+      {% if section.settings.layout == "2" %}
+      .container{
+        width:50%;
+        max-width:unset;
+    }
+    {% elsif section.settings.layout == "3" %}
+    .container{
+        width:100% !important;
+        max-width: max-content;
+    }
+    {% endif %}
+    </style>
 
+    
+    <style>
+      {% if section.settings.dot_color == "1" %}
+      .slick-dots li button:before, .slick-dots li a:before{
+        color: #000;
+        
+      }
+    {% elsif section.settings.dot_color == "2" %}
+      .slick-dots li button:before, .slick-dots li a:before{  
+        color: rgb(159, 179, 179);
+      }
+      {%  elsif  section.settings.dot_color == "3"%}
+        .slick-dots li button:before, .slick-dots li a:before{
+            color: blue;
+          }
+        
+    {% endif %}
+    </style>
+    <style>
+      {% if section.settings.btn_vi == "1" %}
+      button.drag.dogarrow1.slick-prev.pull-left.slick-arrow,button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
+      display: none !important;  
+    }
+    
+    {% elsif section.settings.btn_vi == "2" %}
+    .container:hover button.drag.dogarrow1.slick-prev.pull-left.slick-arrow {
+      display: block;
+    }
+    .container:hover button.drag.dogarrow2.slick-next.pull-right.slick-arrow{
+      display: block;
+
+    }
+    {% endif %}
+    </style>
+    <style>
+      {% if section.settings.cp_code == true %}
+      span#copyText {
+        padding: 10px 20px;
+        justify-content: center;
+        background: none;
+        border:none;
+    }
+    span#copyText:hover {
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        
+    }
+    button.copy {
+    display: flex;
+    margin: 0 auto;
+    padding: 0px;
+  
+
+}
+    {% else %}
+    span#copyText {
+        display: none;
+    }
+  {% endif %}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="canonical" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
+    {% assign collection = section.settings.collection %}
+    
+    <div class="position-cls">
+      <h1 style="display: none;">Code Lock Solution</h1>
+      <button class="copy" onclick="copyToClipboard('h1') "><span id="copyText">Copy Shortcode</span></button>
+    <div class="container bg-clr" style="background-image: url('{{ section.settings.image | img_url:'master' }}'); 
+        background-repeat: no-repeat; background-sixe:cover; background:{{section.settings.cl_bg}}">
+      {%- render 'slide-show' -%}
+      {%- render 'grid-slider'-%}
+      <div class="product-main multipleitems  {% if section.settings.autoplay %}{{ section.settings.au_time | times: 1000 }}
+    {% else %}false{% endif %}">
+    <div class="inc_lz inc_cat_laz" data-include="/search/?section_id=63e95e81-0844-4e05-85bc-a5435f2983eb"><div class="lds_bginfinity pr"></div></div>
     {% for product in collections[collection].products limit: section.settings.product-number %}
       {%- if section.settings.col == "2" -%}
         {%- assign classforcol = 'img-two' -%}
@@ -99,7 +202,15 @@
       <div class="product {{ classforcol }} {{ classforcol_tab }} {{ classforcol_mob }}">
 
         <a href="#">
-          <div class="over-flow reveal">
+      <div class="over-flow reveal{% if section.settings.image_ratio == "ratio2_1" %} ratio2_1  {% endif %}
+                                  {% if section.settings.image_ratio == "ratio16_9" %} ratio16_9 {% endif %}
+                                  {% if section.settings.image_ratio == "ratio8_5" %} ratio8_5  {% endif %}
+                                  {% if section.settings.image_ratio == "ratio3_2" %} ratio3_2  {% endif %}
+                                  {% if section.settings.image_ratio == "ratio4_3" %} ratio4_3  {% endif %}
+                                  {% if section.settings.image_ratio == "ratio_nt" %} ratio_nt  {% endif %}
+                                  {% if section.settings.image_ratio == "ratio1_1" %} ratio1_1  {% endif %}
+                                  {% if section.settings.image_ratio == "ratio2_3" %} ratio2_3  {% endif %}
+                                  {% if section.settings.image_ratio == "ratio1_2" %} ratio1_2  {% endif %}">
             <img src="{{ product.featured_image.src | img_url:'master' }}" alt="{{ product.title }}">
             <img
               class="hidden"
@@ -128,9 +239,8 @@
 </div>
 {% schema %}
   {
-    "name": "Slide Show",
+    "name": "slide Show",
     "settings": [
-
       {
         "type": "text",
         "id": "heading",
@@ -260,7 +370,7 @@
         "type": "checkbox",
         "id": "Button-round",
         "label": "Button-round",
-        "default": true
+        "default": false
       }, {
         "type": "checkbox",
         "id": "Button",
@@ -283,7 +393,81 @@
           }
         ],
         "default": "1"
-      }, {
+      }, 
+       {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Aspect Ratio",
+        "default": "ratio_nt",
+        "info": "Aspect Ratio Custom will settings in General panel.",
+        "options": [
+          {
+            "group": "Landscape",
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio16_9",
+            "label": "16:9"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio8_5",
+            "label": "8:5"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio4_3",
+            "label": "4:3"
+          },
+          {
+            "group": "Landscape",
+            "value": "ratio_nt",
+            "label": "Ratio ASOS"
+          },
+          {
+            "group": "Squared",
+            "value": "ratio1_1",
+            "label": "1:1"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio2_3",
+            "label": "2:3"
+          },
+          {
+            "group": "Portrait",
+            "value": "ratio1_2",
+            "label": "1:2"
+          },
+          {
+            "group": "Custom",
+            "value": "ratio_cus1",
+            "label": "Ratio Custom 1"
+          },
+          {
+            "group": "Custom",
+            "value": "ratio_cus2",
+            "label": "Ratio Custom 2"
+          },
+          {
+            "group": "Custom",
+            "value": "ratio_cus3",
+            "label": "Ratio Custom 3"
+          },
+          {
+            "group": "Custom",
+            "value": "ratio_cus4",
+            "label": "Ratio Custom 4"
+          }
+        ]
+      },{
         "type": "select",
         "id": "col",
         "label": "Products per row (desktop)",
@@ -409,7 +593,8 @@
         "label": "Use Loop?",
         "info": "At the end of cells, wrap-around to the other end for infinite scrolling.",
         "default": true
-      }, {
+      },
+     {
         "type": "range",
         "id": "au_time",
         "min": 1,
@@ -521,7 +706,7 @@
       //   "label": "Enable Page Dot?",
       //   "info": "Creates and enables page dots.",
       //   "default": true
-      // },
+      // }
       {
       "type": "select",
       "id": "dot_mode",
@@ -672,7 +857,7 @@ button.click-botton-third.drag.dogarrow1.slick-prev.pull-left.slick-arrow,button
 }
 button.drag.dogarrow1.slick-prev.pull-left.slick-arrow {
     position: absolute;
-    top: 155px;
+    top: 200px;
     z-index: 9;
     left: 24px;
     padding: 10px 16px;
@@ -681,7 +866,7 @@ button.drag.dogarrow1.slick-prev.pull-left.slick-arrow {
 }
 button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
     position: absolute;
-    top: 155px;
+    top: 200px;
     z-index: 9;
     right: 17px;
     padding: 10px 16px;
@@ -706,7 +891,7 @@ button#products-btn:hover {
 } {% endcomment %}
 
   .container {
-    max-width: 1200px;
+    width: 1200px;
     margin: 0 auto;
     overflow-x: hidden;
 
@@ -946,7 +1131,7 @@ button#products-btn:hover {
     display: inline-block;
     width: 30px;
     height: 2px;
-    background: #222;
+    background: #222; 
     width: 40%;
     height: 1px;
     background: 0 0;
@@ -1147,7 +1332,7 @@ button#products-btn:hover {
     margin: 0;
     padding: 0;
   }
-  .header-slider_2 {
+  .header-slider_2 {  
     font-style: {{ section.settings.change }};
     margin: 0;
   }
@@ -1326,7 +1511,6 @@ button#products-btn:hover {
         width: 20px;
         line-height: 0px;
         font-size: 0px;
-        color: green;
         padding: 5px;
         cursor: pointer; 
         }
@@ -1344,19 +1528,54 @@ button#products-btn:hover {
           font-size: 45px;
           line-height: 20px;
           text-align: center;
-          color: blue;
           opacity: 0.25;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
       }
           .slick-dots li.slick-active button:before {
-          color: #4400ff !important;
           opacity: 0.75; }
           ul.slick-dots{
-          color: #4400ff !important;
           height: 50px;
 
       }
+      .ratio2_1{
+    aspect-ratio: auto 16 / 8; 
+  } 
+    .ratio16_9 {
+      aspect-ratio: auto 16 / 9; 
+      width: 100%;
+    }
+    .ratio8_5  {
+      aspect-ratio: auto 8 / 5; 
+    }
+    .ratio3_2 {
+      aspect-ratio: auto 3 / 2; 
+    } 
+
+    .ratio4_3  {
+      aspect-ratio: auto 4 / 2; 
+      height: 400px;
+      width: 400px;
+    }
+    .ratio_nt  {
+      aspect-ratio: auto 1 / 1; 
+      width: 100%;
+
+    }
+    .ratio1_1  {
+      aspect-ratio: auto 1 / 1; 
+
+    }
+    .ratio2_3  {
+      aspect-ratio: auto 2 / 3; 
+    }
+    .ratio1_2  {
+      aspect-ratio: auto 1 / 2; 
+      width: 300px;
+      height: 300px;
+
+    }
+
 
   @media only screen and (max-width: 991px) {
     .img-tablet-two {
@@ -1378,6 +1597,7 @@ button#products-btn:hover {
       width: 49%;
     }
   }
+  
 </style>
 
 
@@ -1401,7 +1621,7 @@ var previousButtonStyle = "<button type='button' class='drag dogarrow1 slick-pre
   $('.multipleitems').slick({
     arrows: {{section.settings.button}},
     dots: {{section.settings.dot_mode}},
-    infinite: true,
+    infinite: {{section.settings.loop}},
     slidesToShow: {{section.settings.col}},
     speed: {{section.settings.au_time}}00,
     slidesToScroll: 3,
@@ -1429,4 +1649,12 @@ var previousButtonStyle = "<button type='button' class='drag dogarrow1 slick-pre
 
     ]
 });
+function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        $("#copyText").text("Copied Shortcode");
+    }
 </script>
