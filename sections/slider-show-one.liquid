@@ -1,46 +1,50 @@
 <style>
-  #products-btn{
-   display: none;
+  #products-btn {
+    display: none;
   }
-  {% if section.settings.pagination == "2" %}
-   #products-btn{
+    {% if section.settings.pagination=="2" %}
+  #products-btn {
     display: block;
-   }
-  {% endif %}
-</style>
-  <style>
-    {% if section.settings.vandor == true %}
-      #products-btn{
-      display: block;
-    }{% else %}
-    .vandor-info{
-      display: none;
-    }
-  {% endif %}
-  </style>
-  <style>
-    {% if section.settings.Button-round == true %}
-    button#products-btn {
-      border-radius: 50%;
-      padding: 15px 20px;
-  }{% else %}
-    button#products-btn{
-      border-radius: 0%;
-    }
-    {% endif %}
-  </style>
-  <style>
-    {% if section.settings.Button == true %}
-    .btn_icon_true:after {
-      font-family: 'Line Awesome Free';
-      font-weight: 900;
-      content: "→";
-      display: inline-block;
-      margin-left: 5px;
-      font-size: 17px;
-      color: currentColor;
   }
-  {% else %}
+    {% endif %}
+</style>
+
+<style>
+  {% if section.settings.vandor == true %}
+  #products-btn {
+    display: block;
+  }
+    {% else %}
+  .vandor-info {
+    display: none;
+  }
+    {% endif %}
+</style>
+<style>
+  {% if section.settings.Button-round == true %}
+
+  button#products-btn {
+    border-radius: 50%;
+    padding: 15px 20px;
+  }
+    {% else %}
+  button#products-btn {
+    border-radius: 0%;
+  }
+    {% endif %}
+</style>
+<style>
+  {% if section.settings.Button==true %}
+  .btn_icon_true:after {
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    content: "→";
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 17px;
+    color: currentColor;
+  }
+    {% else %}
   .btn_icon_true:after {
     font-family: 'Line Awesome Free';
     font-weight: 900;
@@ -50,821 +54,798 @@
     font-size: 17px;
     color: currentColor;
     display: none;
-} 
-{% endif %}
-  </style>
-  <style>
-    #products-btn{
-    color:black;
-   }
-    {% if section.settings.buttton_style == "2" %}
-    button#products-btn{
+  }
+    {% endif %}
+</style>
+<style>
+  #products-btn {
+    color: black;
+  }
+    {% if section.settings.buttton_style=="2" %}
+  button#products-btn {
     background-color: rgb(24, 24, 204) !important;
-    color:#fff;
-   }
-  {% endif %}
-   {% if section.settings.buttton_style == "3" %}
-   #products-btn{
-    background-color: #000 !important;
-    color:#fff;
-   }
-  {% endif %}
-  </style>
-  
-  <style>
-    {% if section.settings.hidden == true %}
-    .bg-clr {
-      display: none;
-    }
-  {% else %}
-  .bg-clr {
-      display:block;
+    color: #fff;
   }
 {% endif %}
-    </style>
-    <style>
-      {% if section.settings.layout == "2" %}
-      .container{
-        width:50%;
-        max-width:unset;
-    }
-    {% elsif section.settings.layout == "3" %}
-    .container{
-        width:100% !important;
-        max-width: max-content;
-    }
+    {% if section.settings.buttton_style=="3" %}
+  #products-btn {
+    background-color: #000 !important;
+    color: #fff;
+  }
     {% endif %}
-    </style>
+</style>
+<style>
+  {% if section.settings.hidden==true %}
+  .bg-clr {
+    display: none;
+  }
+    {% else %}
+  .bg-clr {
+    display: block;
+  }
+    {% endif %}
+</style>
+<style>
+  {% if section.settings.layout=="2" %}
 
-    
-    <style>
-      {% if section.settings.dot_color == "1" %}
-      .slick-dots li button:before, .slick-dots li a:before{
-        color: #000;
-        
-      }
-    {% elsif section.settings.dot_color == "2" %}
-      .slick-dots li button:before, .slick-dots li a:before{  
-        color: rgb(159, 179, 179);
-      }
-      {%  elsif  section.settings.dot_color == "3"%}
-        .slick-dots li button:before, .slick-dots li a:before{
-            color: blue;
-          }
-        
-    {% endif %}
-    </style>
-    <style>
-      {% if section.settings.btn_vi == "1" %}
-      button.drag.dogarrow1.slick-prev.pull-left.slick-arrow,button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
-      display: none !important;  
-    }
-    
-    {% elsif section.settings.btn_vi == "2" %}
-    .container:hover button.drag.dogarrow1.slick-prev.pull-left.slick-arrow {
-      display: block;
-    }
-    .container:hover button.drag.dogarrow2.slick-next.pull-right.slick-arrow{
-      display: block;
+  .container {
+    width:1200px;
+    max-width: unset;
+  }
 
-    }
+    {% elsif section.settings.layout=="3" %}
+
+  .container {
+    width: 100% !important;
+    max-width: max-content;
+  }
+
     {% endif %}
-    </style>
-    <style>
-      {% if section.settings.cp_code == true %}
-      span#copyText {
-        padding: 10px 20px;
-        justify-content: center;
-        background: none;
-        border:none;
-    }
-    span#copyText:hover {
-        background-color: black;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        
-    }
-    button.copy {
+</style>
+
+
+<style>
+  {% if section.settings.dot_color=="1" %}
+
+  .slick-dots li button:before,
+  .slick-dots li a:before {
+    color: #000;
+
+  }
+
+    {% elsif section.settings.dot_color=="2" %}
+
+  .slick-dots li button:before,
+  .slick-dots li a:before {
+    color: rgb(159, 179, 179);
+  }
+
+    {% elsif section.settings.dot_color=="3" %}
+
+  .slick-dots li button:before,
+  .slick-dots li a:before {
+    color: blue;
+  }
+
+    {% endif %}
+</style>
+<style>
+  {% if section.settings.btn_vi=="1" %}
+
+  button.drag.dogarrow1.slick-prev.pull-left.slick-arrow,
+  button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
+    display: none !important;
+  }
+
+    {% elsif section.settings.btn_vi=="2" %}
+
+  .container:hover button.drag.dogarrow1.slick-prev.pull-left.slick-arrow {
+    display: block;
+  }
+
+  .container:hover button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
+    display: block;
+
+  }
+
+    {% endif %}
+</style>
+<style>
+  {% if section.settings.cp_code==true %}
+  span#copyText {
+    padding: 10px 20px;
+    justify-content: center;
+    background: none;
+    border: none;
+  }
+  span#copyText:hover {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button.copy {
     display: flex;
     margin: 0 auto;
     padding: 0px;
-  
-
-}
+  }
     {% else %}
-    span#copyText {
-        display: none;
-    }
-  {% endif %}
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="canonical" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
-    {% assign collection = section.settings.collection %}
-    
-    <div class="position-cls">
-      <h1 style="display: none;">Code Lock Solution</h1>
-      <button class="copy" onclick="copyToClipboard('h1') "><span id="copyText">Copy Shortcode</span></button>
-    <div class="container bg-clr" style="background-image: url('{{ section.settings.image | img_url:'master' }}'); 
-        background-repeat: no-repeat; background-sixe:cover; background:{{section.settings.cl_bg}}">
-      {%- render 'slide-show' -%}
-      {%- render 'grid-slider'-%}
-      <div class="product-main multipleitems  {% if section.settings.autoplay %}{{ section.settings.au_time | times: 1000 }}
-    {% else %}false{% endif %}">
-    <div class="inc_lz inc_cat_laz" data-include="/search/?section_id=63e95e81-0844-4e05-85bc-a5435f2983eb"><div class="lds_bginfinity pr"></div></div>
-    {% for product in collections[collection].products limit: section.settings.product-number %}
+  span#copyText {
+    display: none;
+  }
+    {% endif %}
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="canonical" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
+{% assign collection = section.settings.collection %}
+<div class="position-cls">
+  <h1 style="display: none;">Code Lock Solution</h1>
+  {% comment %} <button class="copy" onclick="copyToClipboard('h1') "><span id="copyText">Copy Shortcode</span></button> {% endcomment %}
+  <div class="container bg-clr" style="background-image: url('{{ section.settings.image | img_url:'master' }}'); 
+              background-repeat: no-repeat; background-sixe:cover; background:{{section.settings.cl_bg}}">
+    {%- render 'slide-show' -%}
+    {%- render 'grid-slider'-%}
+    <div class="product-main multipleitems  {% if section.settings.autoplay %}{{ section.settings.au_time | times: 1000 }}
+            {% else %}false{% endif %}">
+      <div class="inc_lz inc_cat_laz" data-include="/search/?section_id=63e95e81-0844-4e05-85bc-a5435f2983eb">
+        <div class="lds_bginfinity pr"></div>
+      </div>
+      {% for product in collections[collection].products limit: section.settings.product-number %}
       {%- if section.settings.col == "2" -%}
-        {%- assign classforcol = 'img-two' -%}
+      {%- assign classforcol = 'img-two' -%}
       {%- elsif section.settings.col == "3" -%}
-        {%- assign classforcol = 'img-three' -%}
+      {%- assign classforcol = 'img-three' -%}
       {%- elsif section.settings.col == "4" -%}
-        {%- assign classforcol = 'img-four' -%}
+      {%- assign classforcol = 'img-four' -%}
       {%- elsif section.settings.col == "5" -%}
-        {%- assign classforcol = 'img-five' -%}
+      {%- assign classforcol = 'img-five' -%}
       {%- elsif section.settings.col == "6" -%}
-        {%- assign classforcol = 'img-six' -%}
+      {%- assign classforcol = 'img-six' -%}
       {%- endif -%}
 
       {%- if section.settings.col_md == "2" -%}
-        {%- assign classforcol_tab = 'img-tablet-two' -%}
+      {%- assign classforcol_tab = 'img-tablet-two' -%}
       {%- elsif section.settings.col_md == "3" -%}
-        {%- assign classforcol_tab = 'img-tablet-three' -%}
+      {%- assign classforcol_tab = 'img-tablet-three' -%}
       {%- elsif section.settings.col_md == "4" -%}
-        {%- assign classforcol_tab = 'img-tablet-four' -%}
+      {%- assign classforcol_tab = 'img-tablet-four' -%}
       {%- endif -%}
 
       {%- if section.settings.col_mb == "1" -%}
-        {%- assign classforcol_mob = 'img-mobile-one' -%}
+      {%- assign classforcol_mob = 'img-mobile-one' -%}
       {%- elsif section.settings.col_mb == "2" -%}
-        {%- assign classforcol_mob = 'img-mobile-two' -%}
+      {%- assign classforcol_mob = 'img-mobile-two' -%}
       {%- endif -%}
 
       <div class="product {{ classforcol }} {{ classforcol_tab }} {{ classforcol_mob }}">
 
         <a href="#">
-      <div class="over-flow reveal{% if section.settings.image_ratio == "ratio2_1" %} ratio2_1  {% endif %}
-                                  {% if section.settings.image_ratio == "ratio16_9" %} ratio16_9 {% endif %}
-                                  {% if section.settings.image_ratio == "ratio8_5" %} ratio8_5  {% endif %}
-                                  {% if section.settings.image_ratio == "ratio3_2" %} ratio3_2  {% endif %}
-                                  {% if section.settings.image_ratio == "ratio4_3" %} ratio4_3  {% endif %}
-                                  {% if section.settings.image_ratio == "ratio_nt" %} ratio_nt  {% endif %}
-                                  {% if section.settings.image_ratio == "ratio1_1" %} ratio1_1  {% endif %}
-                                  {% if section.settings.image_ratio == "ratio2_3" %} ratio2_3  {% endif %}
-                                  {% if section.settings.image_ratio == "ratio1_2" %} ratio1_2  {% endif %}">
+          <div class="over-flow reveal{% if section.settings.image_ratio == " ratio2_1" %} ratio2_1 {% endif %} {% if
+            section.settings.image_ratio=="ratio16_9" %} ratio16_9 {% endif %} {% if
+            section.settings.image_ratio=="ratio8_5" %} ratio8_5 {% endif %} {% if
+            section.settings.image_ratio=="ratio3_2" %} ratio3_2 {% endif %} {% if
+            section.settings.image_ratio=="ratio4_3" %} ratio4_3 {% endif %} {% if
+            section.settings.image_ratio=="ratio_nt" %} ratio_nt {% endif %} {% if
+            section.settings.image_ratio=="ratio1_1" %} ratio1_1 {% endif %} {% if
+            section.settings.image_ratio=="ratio2_3" %} ratio2_3 {% endif %} {% if
+            section.settings.image_ratio=="ratio1_2" %} ratio1_2 {% endif %}">
             <img src="{{ product.featured_image.src | img_url:'master' }}" alt="{{ product.title }}">
-            <img
-              class="hidden"
-              src="{{ product.images.last | img_url: 'master' }}"
+            <img class="hidden" src="{{ product.images.last | img_url: 'master' }}"
               alt="{{ product.images.last.alt | escape }}">
           </div>
           {%- for product_vendor in shop.vendors -%}
-            <p class="vandor-info">{{ product.vendor}}</p>
-           {%- endfor -%} 
+          <p class="vandor-info">{{ product.vendor}}</p>
+          {%- endfor -%}
+         {% comment %} <div class="mata">{{product.metafields.custom.footwear}}</div>  {% endcomment %}
           <h3 class="title">{{ product.title }}</h3>
           <p class="price">{{ product.price | money }}</p>
-          
         </a>
       </div>
-    {% endfor %}
-       
-    {%- if section.settings.fliprows -%}
+      {% endfor %}
+
+      {%- if section.settings.fliprows -%}
       {% comment %} Code that will execute if the checkbox is ticked in the theme customizer {% endcomment %}
-    {%- endif -%}
+      {%- endif -%}
     </div>
     <button id="products-btn" class="btn_icon_true">
       View More
-   </button>
-   
-</div>
+    </button>
+  </div>
 </div>
 {% schema %}
-  {
-    "name": "slide Show",
-    "settings": [
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Heading"
-      },
-      {
-        "type": "text",
-        "id": "sub-text",
-        "label": "Sub Text"
-      },
-      {
-        "type": "select",
-        "id": "change",
-        "label": "Sub Text use font",
-        "options": [
-          {
-            "value": "1",
-            "label": "Body font"
-          }, {
-            "value": "2",
-            "label": "Sub Tile Font"
-          }
-        ],
-        "default": "1"
-      },
+{
+"name": "slide Show",
+"settings": [
+{
+"type": "text",
+"id": "heading",
+"label": "Heading"
+},
+{
+"type": "text",
+"id": "sub-text",
+"label": "Sub Text"
+},
+{
+"type": "select",
+"id": "change",
+"label": "Sub Text use font",
+"options": [
+{
+"value": "1",
+"label": "Body font"
+}, {
+"value": "2",
+"label": "Sub Tile Font"
+}
+],
+"default": "1"
+},
 
-      {
-        "type": "select",
-        "id": "title",
-        "label": "Design Title",
-        "options": [
-          {
-            "value": "1",
-            "label": "Design1"
-          },
-          {
-            "value": "2",
-            "label": "Design2"
-          },
-          {
-            "value": "3",
-            "label": "Design3"
-          },
-          {
-            "value": "4",
-            "label": "Design4"
-          }, {
-            "value": "5",
-            "label": "Design5"
-          }, {
-            "value": "6",
-            "label": "Design6"
-          }, {
-            "value": "7",
-            "label": "Design7"
-          }, {
-            "value": "8",
-            "label": "Design8"
-          }, {
-            "value": "9",
-            "label": "Design9"
-          }, {
-            "value": "10",
-            "label": "Design10"
-          }, {
-            "value": "11",
-            "label": "Design11"
-          }, {
-            "value": "12",
-            "label": "Design12"
-          }, {
-            "value": "13",
-            "label": "Design13"
-          }, {
-            "value": "14",
-            "label": "Design14"
-          }
-        ],
-        "default": "1"
-      }, {
-        "type": "checkbox",
-        "id": "fliprows",
-        "label": "Use icon color primary?",
-        "default": true
-      }, {
-        "type": "paragraph",
-        "content": "[Get icons Line awesome](https://icons8.com/line-awesome)"
-      }, {
-        "type": "header",
-        "content": "== General Settings"
-      }, {
-        "type": "collection",
-        "id": "collection",
-        "label": "collection"
-      }, {
-        "type": "range",
-        "label": "Products per page",
-        "info": "Number of products per page",
-        "id": "product-number",
-        "min": 1,
-        "max": 20,
-        "step": 1,
-        "default": 6
-      }, {
-        "type": "range",
-        "label": "Space between products",
-        "id": "product-space",
-        "min": 1,
-        "max": 50,
-        "step": 1,
-        "default": 30
-      }, {
-        "type": "select",
-        "id": "pagination",
-        "label": "Pagination",
-        "options": [
-          {
-            "value": "1",
-            "label": "None"
-          }, {
-            "value": "2",
-            "label": "'View all' button"
-          }
-        ],
-        "default": "1"
-      }, {
-        "type": "checkbox",
-        "id": "Button-round",
-        "label": "Button-round",
-        "default": false
-      }, {
-        "type": "checkbox",
-        "id": "Button",
-        "label": "Button icon?",
-        "default": false
-      }, {
-        "type": "select",
-        "id": "buttton_style",
-        "label": "Button style",
-        "options": [
-          {
-            "value": "1",
-            "label": "Default"
-          }, {
-            "value": "2",
-            "label": "Primary"
-          }, {
-            "value": "3",
-            "label": "Dark"
-          }
-        ],
-        "default": "1"
-      }, 
-       {
-        "type": "select",
-        "id": "image_ratio",
-        "label": "Aspect Ratio",
-        "default": "ratio_nt",
-        "info": "Aspect Ratio Custom will settings in General panel.",
-        "options": [
-          {
-            "group": "Landscape",
-            "value": "ratio2_1",
-            "label": "2:1"
-          },
-          {
-            "group": "Landscape",
-            "value": "ratio16_9",
-            "label": "16:9"
-          },
-          {
-            "group": "Landscape",
-            "value": "ratio8_5",
-            "label": "8:5"
-          },
-          {
-            "group": "Landscape",
-            "value": "ratio3_2",
-            "label": "3:2"
-          },
-          {
-            "group": "Landscape",
-            "value": "ratio4_3",
-            "label": "4:3"
-          },
-          {
-            "group": "Landscape",
-            "value": "ratio_nt",
-            "label": "Ratio ASOS"
-          },
-          {
-            "group": "Squared",
-            "value": "ratio1_1",
-            "label": "1:1"
-          },
-          {
-            "group": "Portrait",
-            "value": "ratio2_3",
-            "label": "2:3"
-          },
-          {
-            "group": "Portrait",
-            "value": "ratio1_2",
-            "label": "1:2"
-          },
-          {
-            "group": "Custom",
-            "value": "ratio_cus1",
-            "label": "Ratio Custom 1"
-          },
-          {
-            "group": "Custom",
-            "value": "ratio_cus2",
-            "label": "Ratio Custom 2"
-          },
-          {
-            "group": "Custom",
-            "value": "ratio_cus3",
-            "label": "Ratio Custom 3"
-          },
-          {
-            "group": "Custom",
-            "value": "ratio_cus4",
-            "label": "Ratio Custom 4"
-          }
-        ]
-      },{
-        "type": "select",
-        "id": "col",
-        "label": "Products per row (desktop)",
-        "info": "How many Collections you want to show per row",
-        "default": "3",
-        "options": [
-          {
-            "value": "2",
-            "label": "2"
-          },
-          {
-            "value": "3",
-            "label": "3"
-          },
-          {
-            "value": "4",
-            "label": "4"
-          },
-          {
-            "value": "5",
-            "label": "5"
-          }, {
-            "value": "6",
-            "label": "6"
-          }
-        ]
-      }, {
-        "type": "select",
-        "id": "col_md",
-        "label": "Products per row (tablet)",
-        "default": "3",
-        "options": [
-          {
-            "value": "2",
-            "label": "2"
-          }, {
-            "value": "3",
-            "label": "3"
-          }, {
-            "value": "4",
-            "label": "4"
-          }
-        ]
-      }, {
-        "type": "select",
-        "id": "col_mb",
-        "label": "Products per row (Mobile)",
-        "default": "1",
-        "options": [
-          {
-            "value": "1",
-            "label": "1"
-          }, {
-            "value": "2",
-            "label": "2"
-          }
-        ]
-      }, {
-        "type": "select",
-        "id": "Design-product",
-        "label": "Design product",
-        "options": [
-          {
-            "value": "1",
-            "label": "Design 1"
-          }, {
-            "value": "2",
-            "label": "Design 1 (center)"
-          }, {
-            "value": "3",
-            "label": "Design 2"
-          }
-        ],
-        "default": "1"
-      }, {
-        "type": "checkbox",
-        "id": "vandor",
-        "label": "Show product vendors",
-        "default": false
-      }, {
-        "type": "header",
-        "content": "== COUNTDOWN TIMER"
+{
+"type": "select",
+"id": "title",
+"label": "Design Title",
+"options": [
+{
+"value": "1",
+"label": "Design1"
+},
+{
+"value": "2",
+"label": "Design2"
+},
+{
+"value": "3",
+"label": "Design3"
+},
+{
+"value": "4",
+"label": "Design4"
+}, {
+"value": "5",
+"label": "Design5"
+}, {
+"value": "6",
+"label": "Design6"
+}, {
+"value": "7",
+"label": "Design7"
+}, {
+"value": "8",
+"label": "Design8"
+}, {
+"value": "9",
+"label": "Design9"
+}, {
+"value": "10",
+"label": "Design10"
+}, {
+"value": "11",
+"label": "Design11"
+}, {
+"value": "12",
+"label": "Design12"
+}, {
+"value": "13",
+"label": "Design13"
+}, {
+"value": "14",
+"label": "Design14"
+}
+],
+"default": "1"
+}, {
+"type": "checkbox",
+"id": "fliprows",
+"label": "Use icon color primary?",
+"default": true
+}, {
+"type": "paragraph",
+"content": "[Get icons Line awesome](https://icons8.com/line-awesome)"
+}, {
+"type": "header",
+"content": "== General Settings"
+}, {
+"type": "collection",
+"id": "collection",
+"label": "collection"
+}, {
+"type": "range",
+"label": "Products per page",
+"info": "Number of products per page",
+"id": "product-number",
+"min": 1,
+"max": 20,
+"step": 1,
+"default": 6
+}, {
+"type": "range",
+"label": "Space between products",
+"id": "product-space",
+"min": 1,
+"max": 50,
+"step": 1,
+"default": 30
+}, {
+"type": "select",
+"id": "pagination",
+"label": "Pagination",
+"options": [
+{
+"value": "1",
+"label": "None"
+}, {
+"value": "2",
+"label": "'View all' button"
+}
+],
+"default": "1"
+}, {
+"type": "checkbox",
+"id": "Button-round",
+"label": "Button-round",
+"default": false
+}, {
+"type": "checkbox",
+"id": "Button",
+"label": "Button icon?",
+"default": false
+}, {
+"type": "select",
+"id": "buttton_style",
+"label": "Button style",
+"options": [
+{
+"value": "1",
+"label": "Default"
+}, {
+"value": "2",
+"label": "Primary"
+}, {
+"value": "3",
+"label": "Dark"
+}
+],
+"default": "1"
+},
+{
+"type": "select",
+"id": "image_ratio",
+"label": "Aspect Ratio",
+"default": "ratio_nt",
+"info": "Aspect Ratio Custom will settings in General panel.",
+"options": [
+{
+"group": "Landscape",
+"value": "ratio2_1",
+"label": "2:1"
+},
+{
+"group": "Landscape",
+"value": "ratio16_9",
+"label": "16:9"
+},
+{
+"group": "Landscape",
+"value": "ratio8_5",
+"label": "8:5"
+},
+{
+"group": "Landscape",
+"value": "ratio3_2",
+"label": "3:2"
+},
+{
+"group": "Landscape",
+"value": "ratio4_3",
+"label": "4:3"
+},
+{
+"group": "Landscape",
+"value": "ratio_nt",
+"label": "Ratio ASOS"
+},
+{
+"group": "Squared",
+"value": "ratio1_1",
+"label": "1:1"
+},
+{
+"group": "Portrait",
+"value": "ratio2_3",
+"label": "2:3"
+},
+{
+"group": "Portrait",
+"value": "ratio1_2",
+"label": "1:2"
+},
+{
+"group": "Custom",
+"value": "ratio_cus1",
+"label": "Ratio Custom 1"
+},
+{
+"group": "Custom",
+"value": "ratio_cus2",
+"label": "Ratio Custom 2"
+},
+{
+"group": "Custom",
+"value": "ratio_cus3",
+"label": "Ratio Custom 3"
+},
+{
+"group": "Custom",
+"value": "ratio_cus4",
+"label": "Ratio Custom 4"
+}
+]
+},{
+"type": "select",
+"id": "col",
+"label": "Products per row (desktop)",
+"info": "How many Collections you want to show per row",
+"default": "3",
+"options": [
+{
+"value": "2",
+"label": "2"
+},
+{
+"value": "3",
+"label": "3"
+},
+{
+"value": "4",
+"label": "4"
+},
+{
+"value": "5",
+"label": "5"
+}, {
+"value": "6",
+"label": "6"
+}
+]
+}, {
+"type": "select",
+"id": "col_md",
+"label": "Products per row (tablet)",
+"default": "3",
+"options": [
+{
+"value": "2",
+"label": "2"
+}, {
+"value": "3",
+"label": "3"
+}, {
+"value": "4",
+"label": "4"
+}
+]
+}, {
+"type": "select",
+"id": "col_mb",
+"label": "Products per row (Mobile)",
+"default": "1",
+"options": [
+{
+"value": "1",
+"label": "1"
+}, {
+"value": "2",
+"label": "2"
+}
+]
+}, {
+"type": "select",
+"id": "Design-product",
+"label": "Design product",
+"options": [
+{
+"value": "1",
+"label": "Design 1"
+}, {
+"value": "2",
+"label": "Design 1 (center)"
+}, {
+"value": "3",
+"label": "Design 2"
+}
+],
+"default": "1"
+}, {
+"type": "checkbox",
+"id": "vandor",
+"label": "Show product vendors", 
+"default": false
+}, {
+"type": "checkbox",
+"id": "loop",
+"label": "Use Loop?",
+"info": "At the end of cells, wrap-around to the other end for infinite scrolling.",
+"default": true
+},
+{
+"type": "range",
+"id": "au_time",
+"min": 1,
+"max": 30,
+"step": 0.5,
+"label": "Autoplay Speed in second.",
+"unit": "sec",
+"default": 6
+}, {
+"type": "checkbox",
+"id": "au_hover",
+"label": "Pause Autoplay On Hover?",
+"info": "Auto-playing will pause when the user hovers over the carousel.",
+"default": true
+}, {
+"type": "header",
+"content": "== Prev Next Button, Page Dot Settings"
+}, {
+"type": "paragraph",
+"content": "—————————————————"
+}, {
+"type": "paragraph",
+"content": "Prev Next Button:"
+},
+// {
+// "type": "checkbox",
+// "id": "button",
+// "label": "Enable Prev Next Button?",
+// "info": "Creates and enables previous & next buttons.",
+// "default": false
+// },
 
-      }, {
-        "type": "checkbox",
-        "id": "use",
-        "label": "Use countdown timer?",
-        "default": false
-      }, {
-        "type": "checkbox",
-        "id": "round",
-        "label": "Round countdown timer?",
-        "default": false
-      }, {
-        "type": "select",
-        "id": "countdown-Design",
-        "label": "Countdown Design:",
-        "options": [
-          {
-            "value": "1",
-            "label": "Design 1"
-          },
-          {
-            "value": "2",
-            "label": "Design 2"
-          },
-          {
-            "value": "3",
-            "label": "Design 3"
-          },
-          {
-            "value": "4",
-            "label": "Design 4"
-          }, {
-            "value": "5",
-            "label": "Design 5"
-          }
-        ],
-        "default": "1"
-      }, {
-        "type": "checkbox",
-        "id": "loop",
-        "label": "Use Loop?",
-        "info": "At the end of cells, wrap-around to the other end for infinite scrolling.",
-        "default": true
-      },
-     {
-        "type": "range",
-        "id": "au_time",
-        "min": 1,
-        "max": 30,
-        "step": 0.5,
-        "label": "Autoplay Speed in second.",
-        "unit": "sec",
-        "default": 6
-      }, {
-        "type": "checkbox",
-        "id": "au_hover",
-        "label": "Pause Autoplay On Hover?",
-        "info": "Auto-playing will pause when the user hovers over the carousel.",
-        "default": true
-      }, {
-        "type": "header",
-        "content": "== Prev Next Button, Page Dot Settings"
-      }, {
-        "type": "paragraph",
-        "content": "—————————————————"
-      }, {
-        "type": "paragraph",
-        "content": "Prev Next Button:"
-      }, 
-      // {
-      //   "type": "checkbox",
-      //   "id": "button",
-      //   "label": "Enable Prev Next Button?",
-      //   "info": "Creates and enables previous & next buttons.",
-      //   "default": false
-      // },
-  
-      {
-        "type": "select",
-        "id": "button",
-        "label": "select Enable Page arrow?",
-        "options": [
-          {
-          "value": "true",
-          "label": "True"
-        }, {
-          "value": "false",
-          "label": "False"
-        }
-        ],
-        "default": "false"
-      }, 
-       {
-        "type": "select",
-        "id": "btn_vi",
-        "label": "Visible:",
-        "default": "1",
-        "options": [
-          {
-            "value": "1",
-            "label": "always"
-          }, {
-            "value": "2",
-            "label": "Only hover"
-          }
-        ]
-      }, {
-        "type": "select",
-        "id": "btn_owl",
-        "label": "Style",
-        "default": "1",
-        "options": [
-          {
-            "value": "1",
-            "label": "Style 1"
-          }, {
-            "value": "2",
-            "label": "Style 2"
-          }, {
-            "value": "3",
-            "label": "Style 3"
-          }
-        ]
-      }, {
-        "type": "select",
-        "id": "btn_color",
-        "label": "Color",
-        "default": "0",
-        "options": [
-          {
-            "value": "0",
-            "label": "Transparent"
-          }, {
-            "value": "1",
-            "label": "Gray"
-          }, {
-            "value": "2",
-            "label": "White"
-          }, {
-            "value": "3",
-            "label": "Primary"
-          }
-        ]
-      }, {
-        "type": "paragraph",
-        "content": "—————————————————"
-      }, {
-        "type": "paragraph",
-        "content": "Page Dot:"
-      }, 
-      // {
-      //   "type": "checkbox",
-      //   "id": "dot_mode",
-      //   "label": "Enable Page Dot?",
-      //   "info": "Creates and enables page dots.",
-      //   "default": true
-      // }
-      {
-      "type": "select",
-      "id": "dot_mode",
-      "label": "Page Dot",
-      "options": [
-        {
-          "value": "true",
-          "label": "True"
-        }, {
-          "value": "false",
-          "label": "False"
-        }
-      ],
-      "default": "true"
-    },
-      {
-        "type": "select",
-        "id": "dot_owl",
-        "label": "Style",
-        "default": "1",
-        "options": [
-          {
-            "value": "1",
-            "label": "Style 1"
-          }, {
-            "value": "2",
-            "label": "Style 2"
-          }
-        ]
-      }, {
-        "type": "select",
-        "id": "dot_color",
-        "label": "Color",
-        "default": "1",
-        "options": [
-          {
-            "value": "1",
-            "label": "Dark"
-          }, {
-            "value": "2",
-            "label": "Light"
-          }, {
-            "value": "3",
-            "label": "Primary"
-          }
-        ]
-      }, {
-        "type": "header",
-        "content": "== Design Options"
-      }, {
-        "type": "checkbox",
-        "id": "hidden",
-        "label": "Hidden Section?",
-        "default": false,
-        "info": "Hidden section on home page, but still visible on blog posts, product page, pages as shortcode."
-      }, {
-        "type": "checkbox",
-        "id": "cp_code",
-        "label": "Show copy shortcode?",
-        "default": false,
-        "info": "Copy shortcode only show on admin editor."
-      }, {
-        "type": "select",
-        "id": "layout",
-        "default": "1",
-        "label": "Layout",
-        "options": [
-          {
-            "value": "1",
-            "label": "Container"
-          }, {
-            "value": "2",
-            "label": "Wrapped Container"
-          }, {
-            "value": "3",
-            "label": "Full Width"
-          }
-        ]
-      }, {
-        "type": "color",
-        "id": "cl_bg",
-        "label": "Background color"
-      }, {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Background Image"
-      }, {
-        "type": "text",
-        "id": "mg",
-        "label": "Margin",
-        "info": "Margin top, margin right, margin bottom, margin left. If you not use to blank",
-        "default": "50px,,50px,",
-        "placeholder": "50px,,50px,"
-      }, {
-        "type": "text",
-        "id": "pd",
-        "label": "Padding",
-        "info": "Padding top, padding right, padding bottom, padding left. If you not use to blank",
-        "placeholder": "50px,,50px,"
-      }, {
-        "type": "header",
-        "content": "== Design Mobile Options"
-      }, {
-        "type": "text",
-        "id": "mg_mb",
-        "label": "Margin",
-        "placeholder": "50px,,50px,"
-      }, {
-        "type": "text",
-        "id": "pd_mb",
-        "label": "Padding",
-        "placeholder": "50px,,50px,"
-      }
-    ],
-    "presets": [
-      {
-        "name": "slider-show-one"
-      }
-    ]
-  }
+{
+"type": "select",
+"id": "button",
+"label": "select Enable Page arrow?",
+"options": [
+{
+"value": "true",
+"label": "True"
+}, {
+"value": "false",
+"label": "False"
+}
+],
+"default": "false"
+},
+{
+"type": "select",
+"id": "btn_vi",
+"label": "Visible:",
+"default": "1",
+"options": [
+{
+"value": "1",
+"label": "always"
+}, {
+"value": "2",
+"label": "Only hover"
+}
+]
+}, {
+"type": "select",
+"id": "btn_owl",
+"label": "Style",
+"default": "1",
+"options": [
+{
+"value": "1",
+"label": "Style 1"
+}, {
+"value": "2",
+"label": "Style 2"
+}, {
+"value": "3",
+"label": "Style 3"
+}
+]
+}, {
+"type": "select",
+"id": "btn_color",
+"label": "Color",
+"default": "0",
+"options": [
+{
+"value": "0",
+"label": "Transparent"
+}, {
+"value": "1",
+"label": "Gray"
+}, {
+"value": "2",
+"label": "White"
+}, {
+"value": "3",
+"label": "Primary"
+}
+]
+}, {
+"type": "paragraph",
+"content": "—————————————————"
+}, {
+"type": "paragraph",
+"content": "Page Dot:"
+},
+// {
+// "type": "checkbox",
+// "id": "dot_mode",
+// "label": "Enable Page Dot?",
+// "info": "Creates and enables page dots.",
+// "default": true
+// }
+{
+"type": "select",
+"id": "dot_mode",
+"label": "Page Dot",
+"options": [
+{
+"value": "true",
+"label": "True"
+}, {
+"value": "false",
+"label": "False"
+}
+],
+"default": "true"
+},
+{
+"type": "select",
+"id": "dot_owl",
+"label": "Style",
+"default": "1",
+"options": [
+{
+"value": "1",
+"label": "Style 1"
+}, {
+"value": "2",
+"label": "Style 2"
+}
+]
+}, {
+"type": "select",
+"id": "dot_color",
+"label": "Color",
+"default": "1",
+"options": [
+{
+"value": "1",
+"label": "Dark"
+}, {
+"value": "2",
+"label": "Light"
+}, {
+"value": "3",
+"label": "Primary"
+}
+]
+}, {
+"type": "header",
+"content": "== Design Options"
+}, {
+"type": "checkbox",
+"id": "hidden",
+"label": "Hidden Section?",
+"default": false,
+"info": "Hidden section on home page, but still visible on blog posts, product page, pages as shortcode."
+}, {
+"type": "checkbox",
+"id": "cp_code",
+"label": "Show copy shortcode?",
+"default": false,
+"info": "Copy shortcode only show on admin editor."
+}, {
+"type": "select",
+"id": "layout",
+"default": "1",
+"label": "Layout",
+"options": [
+{
+"value": "1",
+"label": "Container"
+}, {
+"value": "2",
+"label": "Wrapped Container"
+}, {
+"value": "3",
+"label": "Full Width"
+}
+]
+}, {
+"type": "color",
+"id": "cl_bg",
+"label": "Background color"
+}, {
+"type": "image_picker",
+"id": "image",
+"label": "Background Image"
+}, {
+"type": "text",
+"id": "mg",
+"label": "Margin",
+"info": "Margin top, margin right, margin bottom, margin left. If you not use to blank",
+"default": "50px,,50px,",
+"placeholder": "50px,,50px,"
+}, {
+"type": "text",
+"id": "pd",
+"label": "Padding",
+"info": "Padding top, padding right, padding bottom, padding left. If you not use to blank",
+"placeholder": "50px,,50px,"
+}, {
+"type": "header",
+"content": "== Design Mobile Options"
+}, {
+"type": "text",
+"id": "mg_mb",
+"label": "Margin",
+"placeholder": "50px,,50px,"
+}, {
+"type": "text",
+"id": "pd_mb",
+"label": "Padding",
+"placeholder": "50px,,50px,"
+}
+],
+"presets": [
+{
+"name": "slider-show-one"
+}
+]
+}
 {% endschema %}
 
 <style>
-.position-cls{
+ 
+  .position-cls {
     position: relative;
-}
+  }
 
-button.drag.dogarrow1.slick-prev.pull-left.slick-arrow,button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
+  button.drag.dogarrow1.slick-prev.pull-left.slick-arrow,
+  button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
     transform: rotate(0deg);
     border-radius: 50%;
-}
+  }
 
-button.click-button-two.drag.dogarrow1.slick-prev.pull-left.slick-arrow,button.click-button-two.drag.dogarrow2.slick-next.pull-right.slick-arrow{
+  button.click-button-two.drag.dogarrow1.slick-prev.pull-left.slick-arrow,
+  button.click-button-two.drag.dogarrow2.slick-next.pull-right.slick-arrow {
     border-radius: 0%;
-  transform: rotate(0deg);
-}
-button.click-botton-third.drag.dogarrow1.slick-prev.pull-left.slick-arrow,button.click-botton-third.drag.dogarrow2.slick-next.pull-right.slick-arrow{
-  transform: rotate(35deg); 
-  border-radius: 0%;
-}
+    transform: rotate(0deg);
+  }
 
-.click-botton-third i.fa-sharp.fa-solid.fa-angle-right {
-    transform: rotate(-33deg);
-}
+  button.click-botton-third.drag.dogarrow1.slick-prev.pull-left.slick-arrow,
+  button.click-botton-third.drag.dogarrow2.slick-next.pull-right.slick-arrow {
+    transform: rotate(35deg);
+    border-radius: 0%;
+  }
 
-.click-botton-third i.fa-solid.fa-angle-left {
+  .click-botton-third i.fa-sharp.fa-solid.fa-angle-right {
     transform: rotate(-33deg);
-}
-button.drag.dogarrow1.slick-prev.pull-left.slick-arrow {
+  }
+
+  .click-botton-third i.fa-solid.fa-angle-left {
+    transform: rotate(-33deg);
+  }
+  button.drag.dogarrow1.slick-prev.pull-left.slick-arrow {
     position: absolute;
     top: 200px;
     z-index: 9;
     left: 24px;
+    background: none;
     padding: 10px 16px;
     border: 2px solid black;
-    
-}
-button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
+  }
+  button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
     position: absolute;
     top: 200px;
     z-index: 9;
@@ -872,29 +853,22 @@ button.drag.dogarrow2.slick-next.pull-right.slick-arrow {
     padding: 10px 16px;
     background: none;
     border: 2px solid black;
-}
-button#products-btn{
-  border:1px solid black;
-  background-color: #fff;
-  margin: 0 auto;
-  padding: 10px 18px;
+  }
 
-
-}
-button#products-btn:hover {
+  button#products-btn {
+    border: 1px solid black;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 10px 18px;
+  }
+  button#products-btn:hover {
     background-color: black;
     color: white;
-}
-{% comment %} #image {
-     background-image:url('{{ section.settings.image.src | img_url: 'master' }}');
-     background-size: cover;
-} {% endcomment %}
-
+  }
   .container {
     width: 1200px;
     margin: 0 auto;
     overflow-x: hidden;
-
   }
   .product a {
     text-decoration: none;
@@ -916,7 +890,6 @@ button#products-btn:hover {
     font-style: italic;
     font-weight: 600;
   }
-
   .des_2:after,
   .des_2:before {
     content: "";
@@ -927,11 +900,13 @@ button#products-btn:hover {
     width: 60px;
     margin: 0 30px;
   }
+
   h3.des_2.header-slider {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   .des_3.header-slider:after {
     content: " ";
     position: absolute;
@@ -942,12 +917,15 @@ button#products-btn:hover {
     height: 2px;
     background-color: #222;
   }
+
   .des_4 {
     border-bottom: 2px solid rgba(119, 119, 119, 0.17);
   }
+
   h3.des_4.header-slider {
     padding: 10px 0;
   }
+
   .des_4.header-slider:after {
     content: " ";
     position: absolute;
@@ -959,6 +937,7 @@ button#products-btn:hover {
     text-align: center;
     background-color: #222;
   }
+
   .des_5:after {
     background-image: url('https://cdn.shopify.com/s/files/1/0604/7311/4856/files/svg_title.svg?v=1686722423');
     content: " ";
@@ -969,10 +948,12 @@ button#products-btn:hover {
     width: 250px;
     height: 30px;
   }
+
   .header-text .des_5 {
     padding-bottom: 5px;
     margin-bottom: 40px;
   }
+
   .des_6:after {
     content: " ";
     position: absolute;
@@ -984,6 +965,7 @@ button#products-btn:hover {
     display: inline-block;
     background-color: #dcdcdc;
   }
+
   .des_6 span:after {
     content: " ";
     position: absolute;
@@ -997,6 +979,7 @@ button#products-btn:hover {
     background-color: #c1c1c1;
     transform: rotate(45deg);
   }
+
   .des_6 span:before {
     content: " ";
     position: absolute;
@@ -1010,6 +993,7 @@ button#products-btn:hover {
     background-color: #c1c1c1;
     transform: rotate(-45deg);
   }
+
   .des_6:before {
     content: " ";
     position: absolute;
@@ -1021,6 +1005,7 @@ button#products-btn:hover {
     display: inline-block;
     background-color: #dcdcdc;
   }
+
   .des_7 span:after {
     background-image: url('https://cdn.shopify.com/s/files/1/0604/7311/4856/files/Linearicons_diamond.svg?v=1686744360');
     content: " ";
@@ -1032,6 +1017,7 @@ button#products-btn:hover {
     height: 30px;
     background-repeat: no-repeat;
   }
+
   .des_7:after {
     content: " ";
     position: absolute;
@@ -1043,6 +1029,7 @@ button#products-btn:hover {
     display: inline-block;
     background-color: #dcdcdc;
   }
+
   .des_7:before {
     content: " ";
     position: absolute;
@@ -1054,6 +1041,7 @@ button#products-btn:hover {
     display: inline-block;
     background-color: #dcdcdc;
   }
+
   .des_8:after {
     content: "";
     display: block;
@@ -1064,6 +1052,7 @@ button#products-btn:hover {
     background-color: currentColor;
     margin: 12px auto 15px;
   }
+
   .des_9:before {
     content: "";
     height: 8px;
@@ -1075,12 +1064,15 @@ button#products-btn:hover {
     width: 10%;
     z-index: -1;
   }
+
   h3.des_10.header-slider {
     display: flex;
   }
+
   .display-none {
     display: none;
   }
+
   .des_11:after {
     content: "";
     display: inline-block;
@@ -1095,6 +1087,7 @@ button#products-btn:hover {
     top: 17px;
     left: 14px;
   }
+
   .des_11:before {
     content: "";
     display: inline-block;
@@ -1126,12 +1119,13 @@ button#products-btn:hover {
     top: 17px;
     left: 14px;
   }
+
   .des_12:before {
     content: "";
     display: inline-block;
     width: 30px;
     height: 2px;
-    background: #222; 
+    background: #222;
     width: 40%;
     height: 1px;
     background: 0 0;
@@ -1146,6 +1140,7 @@ button#products-btn:hover {
   p.header-slider_2.body-font.border-bottom {
     margin-bottom: 50px;
   }
+
   .border-bottom:after {
     content: " ";
     position: absolute;
@@ -1156,6 +1151,7 @@ button#products-btn:hover {
     height: 5px;
     background-color: #222;
   }
+
   .des_14.header-slider:after {
     content: " ";
     position: absolute;
@@ -1166,7 +1162,8 @@ button#products-btn:hover {
     height: 4px;
     background-color: #222;
   }
-  {
+
+    {
     content: " ";
     position: absolute;
     bottom: -20%;
@@ -1187,6 +1184,7 @@ button#products-btn:hover {
     top: 48px;
     left: 49.5%;
   }
+
   .title_3::after {
     content: "";
     display: inline-block;
@@ -1197,25 +1195,30 @@ button#products-btn:hover {
     top: 48px;
     left: 49.5%;
   }
+
   .over-flow img {
     width: 100%;
     height: 100%;
     overflow: hidden;
   }
+
   .over-flow {
     overflow: hidden;
     height: 90%;
   }
+
   .title {
     margin: 10px 0 0;
     font-size: 14px;
     color: #4d5959;
     font-weight: 900;
   }
+
   .price {
     margin: 0 0 10px;
     font-size: 14px;
   }
+
   .product {
     width: 33.33%;
     display: flex;
@@ -1226,9 +1229,11 @@ button#products-btn:hover {
     transition: 0.5s ease;
 
   }
+
   .product-info {
     margin: 10px 0 40px;
   }
+
   .load-more_wrap {
     display: flex;
     justify-content: center;
@@ -1238,6 +1243,7 @@ button#products-btn:hover {
   button a {
     color: #ffff;
   }
+
   svg.t4s-btn-icon {
     width: 18px;
     height: 18px;
@@ -1246,6 +1252,7 @@ button#products-btn:hover {
     margin-left: 8px;
     cursor: pointer;
   }
+
   .color-item {
     display: inline-flex;
   }
@@ -1262,32 +1269,41 @@ button#products-btn:hover {
     height: 18px;
     background-color: red;
   }
+
   .t4s-pr-color__item:hover {
     border: 2px solid black;
   }
+
   span.t4s-pr-color__name {
     display: none;
   }
+
   .bg_color_blue {
     --t4s-bg-color: #a8bcd4;
   }
+
   .color-gray {
     background-color: #a8bcd4;
   }
+
   .color-green {
     background-color: green;
   }
+
   .color-pink {
     background-color: #fcc6de;
   }
+
   .color-yellow {
     background-color: yellow;
   }
+
   .product:hover .product-btns {
     display: block;
     transition: 0.5s ease;
     z-index: 99999999;
   }
+
   .t4s-product-btns:before {
     content: "";
     color: white;
@@ -1302,9 +1318,11 @@ button#products-btn:hover {
     top: 100%;
     transition: all 0.2s;
   }
+
   .t4s-product-btns:hover:before {
     top: 0;
   }
+
   .t4s-product-btns {
     position: absolute;
     /* margin-top: 130px; */
@@ -1315,37 +1333,54 @@ button#products-btn:hover {
     overflow: hidden;
     display: none;
   }
+
   .product:hover .t4s-product-btns {
     display: block;
     z-index: 8888;
   }
+
   .t4s-product-btns:hover .reveal .hidden {
     display: block;
 
   }
+
   .header-slider {
     font-size: 25px;
     font-weight: 700;
     color: #000;
   }
+
   .header-slider .header-slider_2 {
     margin: 0;
     padding: 0;
   }
-  .header-slider_2 {  
-    font-style: {{ section.settings.change }};
+
+  .header-slider_2 {
+    font-style: {
+        {
+        section.settings.change
+      }
+    }
+
+    ;
     margin: 0;
   }
-  .nt_cat_lm, .view_more,.js_add_ld {
+
+  .nt_cat_lm,
+  .view_more,
+  .js_add_ld {
     background-image: url('lds-sw.svg?1945') !important;
     background-size: 0 !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     transition: none !important;
-}
-.nt_cat_lm.swl, .view_more.swl,.js_add_ld.swl {
-  background-image: url('lds-swl.svg?1944') !important;
-}
+  }
+
+  .nt_cat_lm.swl,
+  .view_more.swl,
+  .js_add_ld.swl {
+    background-image: url('lds-swl.svg?1944') !important;
+  }
 
   .slick-slider {
     position: relative;
@@ -1359,74 +1394,103 @@ button#products-btn:hover {
     user-select: none;
     -ms-touch-action: pan-y;
     touch-action: pan-y;
-    -webkit-tap-highlight-color: transparent; }
-  
+    -webkit-tap-highlight-color: transparent;
+  }
+
   .slick-list {
     position: relative;
     overflow: hidden;
     display: block;
     margin: 0;
-    padding: 0; }
-    .slick-list:focus {
-      outline: none; }
-    .slick-list.dragging {
-      cursor: pointer;
-      cursor: hand; }
-  
+    padding: 0;
+  }
+
+  .slick-list:focus {
+    outline: none;
+  }
+
+  .slick-list.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+
   .slick-slider .slick-track,
   .slick-slider .slick-list {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
     -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); }
-  
+    transform: translate3d(0, 0, 0);
+  }
+
   .slick-track {
     position: relative;
     left: 0;
     top: 0;
-    display: block; }
-    .slick-track:before, .slick-track:after {
-      content: "";
-      display: table; }
-    .slick-track:after {
-      clear: both; }
-    .slick-loading .slick-track {
-      visibility: hidden; }
-  
+    display: block;
+  }
+
+  .slick-track:before,
+  .slick-track:after {
+    content: "";
+    display: table;
+  }
+
+  .slick-track:after {
+    clear: both;
+  }
+
+  .slick-loading .slick-track {
+    visibility: hidden;
+  }
+
   .slick-slide {
     float: left;
     height: 100%;
-    min-height: 1px;
-    display: none; }
-    [dir="rtl"] .slick-slide {
-      float: right; }
-    .slick-slide img {
-      display: block; }
-    .slick-slide.slick-loading img {
-      display: none; }
-    .slick-slide.dragging img {
-      pointer-events: none; }
-    .slick-initialized .slick-slide {
-      display: block; }
-    .slick-loading .slick-slide {
-      visibility: hidden; }
-    .slick-vertical .slick-slide {
-      display: block;
-      height: auto;
-      border: 1px solid transparent; }
-  
+    {% comment %} min-height: 1px; {% endcomment %}
+    display: none;
+  }
+
+  [dir="rtl"] .slick-slide {
+    float: right;
+  }
+
+  .slick-slide img {
+    display: block;
+  }
+
+  .slick-slide.slick-loading img {
+    display: none;
+  }
+
+  .slick-slide.dragging img {
+    pointer-events: none;
+  }
+
+  .slick-initialized .slick-slide {
+    display: block;
+  }
+
+  .slick-loading .slick-slide {
+    visibility: hidden;
+  }
+
+  .slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+  }
+
   .slick-arrow.slick-hidden {
-    display: none; }
-  
+    display: none;
+  }
+
   /*================ Slick Slider Theme ================*/
   .slick-loading .slick-list {
-    background: #fff var(--slick-img-url) center center no-repeat; }
-  
-  / Icons /
-  / Arrows /
-  
-  .slick-prev,
+    background: #fff var(--slick-img-url) center center no-repeat;
+  }
+
+  / Icons / / Arrows / .slick-prev,
   .slick-next {
     position: absolute;
     display: block;
@@ -1442,148 +1506,185 @@ button#products-btn:hover {
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
     padding: 0;
-    border: none; 
-    }
-    .slick-prev:before,
-    .slick-next:before {
-      font-family: "slick-icons, sans-serif";
-      font-size: 20px;
-      line-height: 1;
-      color: #000;
-      opacity: 0.75;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    border: none;
+  }
 
-       }
-  
+  .slick-prev:before,
+  .slick-next:before {
+    font-family: "slick-icons, sans-serif";
+    font-size: 20px;
+    line-height: 1;
+    color: #000;
+    opacity: 0.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+  }
+
   .slick-prev {
-    left: -25px; }
-    [dir="rtl"] .slick-prev {
-      left: auto;
-      right: -25px; }
-    .slick-prev:before {
-      content: ""; }
-      [dir="rtl"] .slick-prev:before {
-        content: ""; }
-  
+    left: -25px;
+  }
+
+  [dir="rtl"] .slick-prev {
+    left: auto;
+    right: -25px;
+  }
+
+  .slick-prev:before {
+    content: "";
+  }
+
+  [dir="rtl"] .slick-prev:before {
+    content: "";
+  }
+
   .slick-next {
-    right: -25px; }
-    [dir="rtl"] .slick-next {
-      left: -25px;
-      right: auto; }
-    .slick-next:before {
-      content: ""; }
-      [dir="rtl"] .slick-next:before {
-        content: ""; 
-        }
-  
-  / Dots /
-  .slick-dotted.slick-slider {
-    margin-bottom: 30px; }
-  
-    .slick-dots {
-        list-style: none;
-        display: block;
-        text-align: center;
-        padding: 0;
-        margin: 0;
-    }
-    li#slick-slide00{
-        background-color: transparent !important;
-        z-index: 999;
+    right: -25px;
+  }
 
-    }
-    .slick-dots li {
-      position: relative;
-      display: inline-block;
-      height: 20px;
-      width: 20px;
-      margin: 0;
-      padding: 0;
-      cursor: pointer;
-      background: transparent !important;
-      }
-      .slick-dots li button, .slick-dots li a {
-        border: 0;
-        background: none;
-        display: block;
-        height: 20px;
-        width: 20px;
-        line-height: 0px;
-        font-size: 0px;
-        padding: 5px;
-        cursor: pointer; 
-        }
-        .slick-dots li button:hover:before, .slick-dots li button:focus:before, .slick-dots li a:hover:before, .slick-dots li a:focus:before {
-          opacity: 1;
-           }
-        .slick-dots li button:before, .slick-dots li a:before {
-          position: absolute;
-          top: 0px;
-          left: 0px;
-          content: "•";
-          width: 20px;
-          height: 20px;
-          font-family: "slick-icons, sans-serif";
-          font-size: 45px;
-          line-height: 20px;
-          text-align: center;
-          opacity: 0.25;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-      }
-          .slick-dots li.slick-active button:before {
-          opacity: 0.75; }
-          ul.slick-dots{
-          height: 50px;
+  [dir="rtl"] .slick-next {
+    left: -25px;
+    right: auto;
+  }
 
-      }
-      .ratio2_1{
-    aspect-ratio: auto 16 / 8; 
-  } 
-    .ratio16_9 {
-      aspect-ratio: auto 16 / 9; 
-      width: 100%;
-    }
-    .ratio8_5  {
-      aspect-ratio: auto 8 / 5; 
-    }
-    .ratio3_2 {
-      aspect-ratio: auto 3 / 2; 
-    } 
+  .slick-next:before {
+    content: "";
+  }
 
-    .ratio4_3  {
-      aspect-ratio: auto 4 / 2; 
-      height: 400px;
-      width: 400px;
-    }
-    .ratio_nt  {
-      aspect-ratio: auto 1 / 1; 
-      width: 100%;
+  [dir="rtl"] .slick-next:before {
+    content: "";
+  }
 
-    }
-    .ratio1_1  {
-      aspect-ratio: auto 1 / 1; 
+  / Dots / .slick-dotted.slick-slider {
+    margin-bottom: 30px;
+  }
 
-    }
-    .ratio2_3  {
-      aspect-ratio: auto 2 / 3; 
-    }
-    .ratio1_2  {
-      aspect-ratio: auto 1 / 2; 
-      width: 300px;
-      height: 300px;
+  .slick-dots {
+    list-style: none;
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
 
-    }
+  li#slick-slide00 {
+    background-color: transparent !important;
+    z-index: 999;
+
+  }
+
+  .slick-dots li {
+    position: relative;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background: transparent !important;
+  }
+
+  .slick-dots li button,
+  .slick-dots li a {
+    border: 0;
+    background: none;
+    display: block;
+    height: 20px;
+    width: 20px;
+    line-height: 0px;
+    font-size: 0px;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .slick-dots li button:hover:before,
+  .slick-dots li button:focus:before,
+  .slick-dots li a:hover:before,
+  .slick-dots li a:focus:before {
+    opacity: 1;
+  }
+
+  .slick-dots li button:before,
+  .slick-dots li a:before {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    content: "•";
+    width: 20px;
+    height: 20px;
+    font-family: "slick-icons, sans-serif";
+    font-size: 45px;
+    line-height: 20px;
+    text-align: center;
+    opacity: 0.25;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .slick-dots li.slick-active button:before {
+    opacity: 0.75;
+  }
+
+  ul.slick-dots {
+    height: 50px;
+
+  }
+
+  .ratio2_1 {
+    aspect-ratio: auto 16 / 8;
+  }
+
+  .ratio16_9 {
+    aspect-ratio: auto 16 / 9;
+    width: 100%;
+  }
+
+  .ratio8_5 {
+    aspect-ratio: auto 8 / 5;
+  }
+
+  .ratio3_2 {
+    aspect-ratio: auto 3 / 2;
+  }
+
+  .ratio4_3 {
+    aspect-ratio: auto 4 / 2;
+    height: 400px;
+    width: 400px;
+  }
+
+  .ratio_nt {
+    aspect-ratio: auto 1 / 1;
+    width: 100%;
+
+  }
+
+  .ratio1_1 {
+    aspect-ratio: auto 1 / 1;
+
+  }
+
+  .ratio2_3 {
+    aspect-ratio: auto 2 / 3;
+  }
+
+  .ratio1_2 {
+    aspect-ratio: auto 1 / 2;
+    width: 300px;
+    height: 300px;
+
+  }
 
 
   @media only screen and (max-width: 991px) {
     .img-tablet-two {
       width: 50%;
     }
+
     .img-tablet-three {
       width: 33%;
     }
+
     .img-tablet-four {
       width: 24%;
     }
@@ -1593,11 +1694,11 @@ button#products-btn:hover {
     .img-mobile-one {
       width: 90%;
     }
+
     .img-mobile-two {
       width: 49%;
     }
   }
-  
 </style>
 
 
@@ -1606,55 +1707,46 @@ button#products-btn:hover {
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <script>
 
-var buttonStyle = {{section.settings.btn_owl}};
-var nextButtonStyle = "<button type='button' class='drag dogarrow2  slick-next pull-right'><i class='fa-sharp fa-solid fa-angle-right'></i></button>";
-var previousButtonStyle = "<button type='button' class='drag dogarrow1 slick-prev pull-left'><i class='fa-solid fa-angle-left '></i></button>";
+  var buttonStyle = {{ section.settings.btn_owl }};
+  var nextButtonStyle = "<button type='button' class='drag dogarrow2  slick-next pull-right'><i class='fa-sharp fa-solid fa-angle-right'></i></button>";
+  var previousButtonStyle = "<button type='button' class='drag dogarrow1 slick-prev pull-left'><i class='fa-solid fa-angle-left '></i></button>";
 
- if(buttonStyle == '2'){
-  nextButtonStyle = "<button type='button' class='click-button-two drag dogarrow2  slick-next pull-right'><i class='fa-sharp fa-solid fa-angle-right'></i></button>";
-  previousButtonStyle = "<button type='button' class='click-button-two drag dogarrow1 slick-prev pull-left'><i class='fa-solid fa-angle-left '></i></button>";
-}else if(buttonStyle == '3'){
-  nextButtonStyle = "<button type='button' class='click-botton-third drag dogarrow2  slick-next pull-right'><i class='fa-sharp fa-solid fa-angle-right'></i></button>";
-  previousButtonStyle = "<button type='button' class='click-botton-third drag dogarrow1 slick-prev pull-left'><i class='fa-solid fa-angle-left '></i></button>";
-} 
+  if (buttonStyle == '2') {
+    nextButtonStyle = "<button type='button' class='click-button-two drag dogarrow2  slick-next pull-right'><i class='fa-sharp fa-solid fa-angle-right'></i></button>";
+    previousButtonStyle = "<button type='button' class='click-button-two drag dogarrow1 slick-prev pull-left'><i class='fa-solid fa-angle-left '></i></button>";
+  } else if (buttonStyle == '3') {
+    nextButtonStyle = "<button type='button' class='click-botton-third drag dogarrow2  slick-next pull-right'><i class='fa-sharp fa-solid fa-angle-right'></i></button>";
+    previousButtonStyle = "<button type='button' class='click-botton-third drag dogarrow1 slick-prev pull-left'><i class='fa-solid fa-angle-left '></i></button>";
+  }
 
   $('.multipleitems').slick({
-    arrows: {{section.settings.button}},
-    dots: {{section.settings.dot_mode}},
-    infinite: {{section.settings.loop}},
-    slidesToShow: {{section.settings.col}},
-    speed: {{section.settings.au_time}}00,
+    arrows: {{ section.settings.button }},
+    dots: {{ section.settings.dot_mode }},
+    infinite: {{ section.settings.loop }},
+    slidesToShow: {{ section.settings.col }},
+    speed: {{ section.settings.au_time }}00,
     slidesToScroll: 3,
     autoplay: true,
+    pauseOnHover:{{ section.settings.au_hover  }},
     prevArrow: previousButtonStyle,
     nextArrow: nextButtonStyle,
     responsive: [{
-            breakpoint: 991,
-            settings: {
-                slidesToShow: {{section.settings.col_md}},
-                slidesToScroll: 1,
-                infinite: true,
-                speed: {{section.settings.scrolling_speed}}
-                100,
-                dots: true
+      breakpoint: 991,
+        settings: {
+        slidesToShow: {{ section.settings.col_md }},
+        slidesToScroll: 3,
+        infinite: true,
+        speed: {{ section.settings.scrolling_speed }}
+        000,
+        dots: true
             }
         },
-        {
-            breakpoint: 576,
-            settings: {
-                slidesToShow: {{section.settings.col_mb}}
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: {{ section.settings.col_mb }}
             }
         },
-
-
-    ]
+  ]
 });
-function copyToClipboard(element) {
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($(element).text()).select();
-        document.execCommand("copy");
-        $temp.remove();
-        $("#copyText").text("Copied Shortcode");
-    }
 </script>
